@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+    public float Speed = 5f;
+    // boundary
+    private float xMin = -2f;
+    private float xMax =  2f;
+    private float yMin = -3f;
+    private float yMax =  3f;
+    // speed up, speed down
+    private float speedStep = 1f;
     // Update is called once per frame
     void Update()
     {
@@ -21,8 +23,33 @@ public class PlayerMove : MonoBehaviour
         Vector2 position = transform.position;
 
         Vector2 newPosition;
-        newPosition = position + direction;
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Speed += speedStep;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Speed -= speedStep;
+            if(Speed <=0) Speed = 0;
+        }
+        newPosition = position + direction * (Speed * Time.deltaTime);
+        if (newPosition.x > xMax)
+        {
+            newPosition.x = xMin;
+        }
+        else if (newPosition.x < xMin)
+        {
+            newPosition.x = xMax;
+        }
+        
+        if (newPosition.y > yMax)
+        {
+            newPosition.y = yMin;
+        }
+        else if (newPosition.y < yMin)
+        {
+            newPosition.y = yMax;
+        }
         transform.position = newPosition;
-
     }
 }
