@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float Speed = 5f;
-    // boundary
-    private float xMin = -2f;
-    private float xMax =  2f;
-    private float yMin = -3f;
-    private float yMax =  3f;
-    // speed up, speed down
-    private float speedStep = 1f;
+    [Header("Boundary")]
+    [SerializeField] private float _xMin = -2f;
+    [SerializeField] private float _xMax =  2f;
+    [SerializeField] private float _yMin = -3f;
+    [SerializeField] private float _yMax =  3f;
+    
+    [Header("Speed")]
+    [SerializeField] private float _speedStep = 1f;
+    [SerializeField] private float _speed = 5f;
     // Update is called once per frame
     void Update()
     {
@@ -17,38 +18,39 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         Debug.Log($"h:{h}, v:{v}");
         
-        Vector2 direction = new Vector2(h, v);
-        Debug.Log($"direction:{direction}");
+        Vector2 direction = new Vector2(h, v).normalized;
         
         Vector2 position = transform.position;
-
         Vector2 newPosition;
+        
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Speed += speedStep;
+            _speed += _speedStep;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Speed -= speedStep;
-            if(Speed <=0) Speed = 0;
-        }
-        newPosition = position + direction * (Speed * Time.deltaTime);
-        if (newPosition.x > xMax)
-        {
-            newPosition.x = xMin;
-        }
-        else if (newPosition.x < xMin)
-        {
-            newPosition.x = xMax;
+            _speed -= _speedStep;
+            if(_speed <=0) _speed = 0;
         }
         
-        if (newPosition.y > yMax)
+        newPosition = position + direction * (_speed * Time.deltaTime);
+        
+        if (newPosition.x > _xMax)
         {
-            newPosition.y = yMin;
+            newPosition.x = _xMin;
         }
-        else if (newPosition.y < yMin)
+        else if (newPosition.x < _xMin)
         {
-            newPosition.y = yMax;
+            newPosition.x = _xMax;
+        }
+        
+        if (newPosition.y > _yMax)
+        {
+            newPosition.y = _yMin;
+        }
+        else if (newPosition.y < _yMin)
+        {
+            newPosition.y = _yMax;
         }
         transform.position = newPosition;
     }
