@@ -3,21 +3,21 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Boundary")]
-    [SerializeField] private float _xMin = -2f;
-    [SerializeField] private float _xMax = 2f;
-    [SerializeField] private float _yMin = -3f;
-    [SerializeField] private float _yMax = 3f;
+    public float XMin = -2f;
+    public float XMax = 2f;
+    public float YMin = -3f;
+    public float YMax = 3f;
 
     [Header("Speed")]
-    [SerializeField] private float _speedStep = 1f;
-    [SerializeField] private float _speedMul = 3f;
-    [SerializeField] private float _baseSpeed = 1f;
+    public float SpeedStep = 1f;
+    public float SpeedMul = 1.5f;
+    public float BaseSpeed = 2f;
 
-    private float _currentSpeed;
+    public float CurrentSpeed = 0f;
 
     void Start()
     {
-        _currentSpeed = _baseSpeed;
+        CurrentSpeed = BaseSpeed;
     }
 
     void Update()
@@ -32,25 +32,25 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            _baseSpeed += _speedStep;
+            BaseSpeed += SpeedStep;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _baseSpeed = Mathf.Max(0f, _baseSpeed - _speedStep);
+            BaseSpeed = Mathf.Max(0f, BaseSpeed - SpeedStep);
         }
     }
 
     private void UpdateCurrentSpeed()
     {
         bool isShiftPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        _currentSpeed = isShiftPressed ? _baseSpeed * _speedMul : _baseSpeed;
+        CurrentSpeed = isShiftPressed ? BaseSpeed * SpeedMul : BaseSpeed;
     }
 
     private void HandleMovement()
     {
         Vector3 moveDirection = GetMoveDirection();
-        transform.Translate(moveDirection * _currentSpeed * Time.deltaTime);
+        transform.Translate(moveDirection * (CurrentSpeed * Time.deltaTime));
     }
 
     private Vector3 GetMoveDirection()
@@ -69,8 +69,8 @@ public class PlayerMove : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        pos.x = WrapCoordinate(pos.x, _xMin, _xMax);
-        pos.y = WrapCoordinate(pos.y, _yMin, _yMax);
+        pos.x = WrapCoordinate(pos.x, XMin, XMax);
+        pos.y = WrapCoordinate(pos.y, YMin, YMax);
 
         transform.position = pos;
     }

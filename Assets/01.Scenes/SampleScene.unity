@@ -440,13 +440,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8753007bc0c2e3b4cad398a7053d6aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xMin: -2
-  _xMax: 2
-  _yMin: -3
-  _yMax: 3
-  _speedStep: 1
-  _speedMul: 3
-  _baseSpeed: 1
+  XMin: -2
+  XMax: 2
+  YMin: -3
+  YMax: 3
+  SpeedStep: 1
+  SpeedMul: 1.5
+  BaseSpeed: 2
+  CurrentSpeed: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
