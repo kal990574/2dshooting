@@ -18,6 +18,7 @@ public class PlayerFire : MonoBehaviour
     
     private float _lastFireTime = -1f;
     private int _fireMode = 1; 
+    // 열거형 처리할 것
 
     private void Update()
     {

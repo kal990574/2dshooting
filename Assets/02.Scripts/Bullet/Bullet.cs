@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
     private float _startX;
     // 수평 방향
     private float _horizontalDirection = 1f; 
-
+    
     void Start()
     {
         // 처음 speed 저장
