@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [Header("Boundary")]
+    [Header("Movement Boundary")]
     public float XMin = -2f;
     public float XMax = 2f;
     public float YMin = -5f;
     public float YMax = 5f;
 
-    [Header("Speed")]
+    [Header("Speed Settings")]
+    public float BaseSpeed = 2f;
     public float SpeedStep = 1f;
     public float SpeedMul = 1.5f;
-    public float BaseSpeed = 2f;
 
+    [Header("Runtime Info")]
     public float CurrentSpeed = 0f;
-    
-    [Header("Start Position")]
+
+    // Private variables
     private Vector3 _originPosition;
 
     void Start()
@@ -34,11 +35,13 @@ public class PlayerMove : MonoBehaviour
 
     private void HandleSpeedInput()
     {
+        // Q: 속도 증가
         if (Input.GetKeyDown(KeyCode.Q))
         {
             BaseSpeed += SpeedStep;
         }
 
+        // E: 속도 감소
         if (Input.GetKeyDown(KeyCode.E))
         {
             BaseSpeed = Mathf.Max(0f, BaseSpeed - SpeedStep);
@@ -47,6 +50,7 @@ public class PlayerMove : MonoBehaviour
 
     private void UpdateCurrentSpeed()
     {
+        // Shift: 고속 이동
         bool isShiftPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         CurrentSpeed = isShiftPressed ? BaseSpeed * SpeedMul : BaseSpeed;
     }
@@ -59,11 +63,13 @@ public class PlayerMove : MonoBehaviour
 
     private Vector3 GetMoveDirection()
     {
+        // R: 원점으로 자동 귀환
         if (Input.GetKey(KeyCode.R))
         {
             return (_originPosition - transform.position).normalized;
         }
 
+        // 일반 이동 (WASD or Arrow Keys)
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         return new Vector2(h, v).normalized;
@@ -73,6 +79,7 @@ public class PlayerMove : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
+        // 화면 경계를 넘으면 반대편으로 나옴 (Wrap around)
         pos.x = WrapCoordinate(pos.x, XMin, XMax);
         pos.y = WrapCoordinate(pos.y, YMin, YMax);
 
