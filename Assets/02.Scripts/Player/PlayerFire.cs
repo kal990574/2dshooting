@@ -2,65 +2,97 @@ using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
-    // 필요 속성
-    [Header("총알 프리팹")]
+    public enum FireMode
+    {
+        // 자동 공격
+        Auto = 1,   
+        // 수동 공격
+        Manual = 2     
+    }
+
+    [Header("Bullet Prefabs")]
     public GameObject MainBulletPrefab;
     public GameObject SubBulletPrefab;
-    
-    [Header("총구")]
+
+    [Header("Fire Positions")]
     public Transform MainFirePositionLeft;
     public Transform MainFirePositionRight;
     public Transform SubFirePositionLeft;
     public Transform SubFirePositionRight;
-    
-    [Header("발사 설정")]
+
+    [Header("Fire Settings")]
     public float FireCooldown = 0.6f;
-    
+    public FireMode CurrentFireMode = FireMode.Auto;
+
+    // Private variables
     private float _lastFireTime = -1f;
-    private int _fireMode = 1; 
-    // 열거형 처리할 것
 
     private void Update()
     {
+        HandleFireModeInput();
+        HandleFiring();
+    }
+
+    private void HandleFireModeInput()
+    {
+        // 1: 자동 공격 모드
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _fireMode = 1;
+            CurrentFireMode = FireMode.Auto;
         }
 
+        // 2: 수동 공격 모드
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            _fireMode = 2;
+            CurrentFireMode = FireMode.Manual;
+        }
+    }
+
+    private void HandleFiring()
+    {
+        bool shouldFire = false;
+
+        switch (CurrentFireMode)
+        {
+            case FireMode.Auto:
+                // 자동 공격: 쿨다운마다 자동 발사
+                shouldFire = true;
+                break;
+
+            case FireMode.Manual:
+                // 수동 공격: Space를 누르고 있을 때만 발사
+                shouldFire = Input.GetKey(KeyCode.Space);
+                break;
         }
 
-        // 자동 공격
-        if (_fireMode == 1)
+        if (shouldFire && CanFire())
         {
-            if (Time.time >= _lastFireTime + FireCooldown)
-            {
-                Fire();
-                _lastFireTime = Time.time;
-            }
+            Fire();
+            _lastFireTime = Time.time;
         }
-        // 수동 공격
-        else if (_fireMode == 2 && Input.GetKey(KeyCode.Space))
-        {
-            if (Time.time >= _lastFireTime + FireCooldown)
-            {
-                Fire();
-                _lastFireTime = Time.time;
-            }
-        }
+    }
+
+    private bool CanFire()
+    {
+        return Time.time >= _lastFireTime + FireCooldown;
     }
 
     private void Fire()
     {
-        GameObject mainBulletLeft = Instantiate(MainBulletPrefab);
-        mainBulletLeft.transform.position = MainFirePositionLeft.position;
-        GameObject mainBulletRight = Instantiate(MainBulletPrefab);
-        mainBulletRight.transform.position = MainFirePositionRight.position;
-        GameObject subBulletLeft = Instantiate(SubBulletPrefab);
-        subBulletLeft.transform.position = SubFirePositionLeft.position;
-        GameObject subBulletRight = Instantiate(SubBulletPrefab);
-        subBulletRight.transform.position = SubFirePositionRight.position;
+        // Main 총알 발사 (좌우)
+        SpawnBullet(MainBulletPrefab, MainFirePositionLeft);
+        SpawnBullet(MainBulletPrefab, MainFirePositionRight);
+
+        // Sub 총알 발사 (좌우)
+        SpawnBullet(SubBulletPrefab, SubFirePositionLeft);
+        SpawnBullet(SubBulletPrefab, SubFirePositionRight);
+    }
+
+    private void SpawnBullet(GameObject bulletPrefab, Transform firePosition)
+    {
+        if (bulletPrefab != null && firePosition != null)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePosition.position, Quaternion.identity);
+        }
     }
 }
