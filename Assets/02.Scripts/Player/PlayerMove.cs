@@ -5,8 +5,8 @@ public class PlayerMove : MonoBehaviour
     [Header("Boundary")]
     public float XMin = -2f;
     public float XMax = 2f;
-    public float YMin = -3f;
-    public float YMax = 3f;
+    public float YMin = -5f;
+    public float YMax = 5f;
 
     [Header("Speed")]
     public float SpeedStep = 1f;
