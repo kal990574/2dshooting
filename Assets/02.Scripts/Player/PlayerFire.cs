@@ -2,27 +2,47 @@ using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
-    // 목표: 스페이스바를 누르면 총알을 만들어서 발사하고 싶다.
-
     // 필요 속성
     [Header("총알 프리팹")]
-    public GameObject BulletPrefab1;
-    public GameObject BulletPrefab2;
+    public GameObject MainBulletPrefab;
+    public GameObject SubBulletPrefab;
+    
     [Header("총구")]
-    public Transform FirePosition1;
-    public Transform FirePosition2;
-    public Transform FirePosition3;
-    public Transform FirePosition4;
+    public Transform MainFirePositionLeft;
+    public Transform MainFirePositionRight;
+    public Transform SubFirePositionLeft;
+    public Transform SubFirePositionRight;
+    
     [Header("발사 설정")]
     public float FireCooldown = 0.6f;
     
     private float _lastFireTime = -1f;
+    private int _fireMode = 1; 
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            // 쿨타임
+            _fireMode = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _fireMode = 2;
+        }
+
+        // 자동 공격
+        if (_fireMode == 1)
+        {
+            if (Time.time >= _lastFireTime + FireCooldown)
+            {
+                Fire();
+                _lastFireTime = Time.time;
+            }
+        }
+        // 수동 공격
+        else if (_fireMode == 2 && Input.GetKey(KeyCode.Space))
+        {
             if (Time.time >= _lastFireTime + FireCooldown)
             {
                 Fire();
@@ -33,13 +53,13 @@ public class PlayerFire : MonoBehaviour
 
     private void Fire()
     {
-        GameObject bullet1 = Instantiate(BulletPrefab1);
-        bullet1.transform.position = FirePosition1.position;
-        GameObject bullet2 = Instantiate(BulletPrefab1);
-        bullet2.transform.position = FirePosition2.position;
-        GameObject bullet3 = Instantiate(BulletPrefab2);
-        bullet3.transform.position = FirePosition3.position;
-        GameObject bullet4 = Instantiate(BulletPrefab2);
-        bullet4.transform.position = FirePosition4.position;
+        GameObject mainBulletLeft = Instantiate(MainBulletPrefab);
+        mainBulletLeft.transform.position = MainFirePositionLeft.position;
+        GameObject mainBulletRight = Instantiate(MainBulletPrefab);
+        mainBulletRight.transform.position = MainFirePositionRight.position;
+        GameObject subBulletLeft = Instantiate(SubBulletPrefab);
+        subBulletLeft.transform.position = SubFirePositionLeft.position;
+        GameObject subBulletRight = Instantiate(SubBulletPrefab);
+        subBulletRight.transform.position = SubFirePositionRight.position;
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 579585721711917896}
   - component: {fileID: 2146797967117695350}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Main Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,4 +103,8 @@ MonoBehaviour:
   StartSpeed: 1
   EndSpeed: 7
   AccelerationTime: 1.2
-  _currentSpeed: 0
+  CurrentSpeed: 0
+  MoveMode: 1
+  HorizontalSpeed: 3
+  XMin: -1
+  XMax: 1

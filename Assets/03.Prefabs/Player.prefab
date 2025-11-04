@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5796775146549417431}
   m_Layer: 0
-  m_Name: FirePosition (2)
+  m_Name: SubFirePositionLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4203933198134132424}
   m_Layer: 0
-  m_Name: FirePosition (3)
+  m_Name: SubFirePositionRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8336415451501836904}
   m_Layer: 0
-  m_Name: FirePosition
+  m_Name: MainFirePositionRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7829907624741379564}
   m_Layer: 0
-  m_Name: FirePosition (1)
+  m_Name: MainFirePositionLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
