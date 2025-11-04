@@ -14,10 +14,14 @@ public class PlayerMove : MonoBehaviour
     public float BaseSpeed = 2f;
 
     public float CurrentSpeed = 0f;
+    
+    [Header("Start Position")]
+    private Vector3 _originPosition;
 
     void Start()
     {
         CurrentSpeed = BaseSpeed;
+        _originPosition = transform.position;
     }
 
     void Update()
@@ -57,7 +61,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-            return (Vector3.zero - transform.position).normalized;
+            return (_originPosition - transform.position).normalized;
         }
 
         float h = Input.GetAxis("Horizontal");
