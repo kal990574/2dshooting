@@ -79,11 +79,11 @@ public class PlayerFire : MonoBehaviour
 
     private void Fire()
     {
-        // Main 총알 발사 (좌우)
+        // Main 총알 발사
         SpawnBullet(MainBulletPrefab, MainFirePositionLeft);
         SpawnBullet(MainBulletPrefab, MainFirePositionRight);
 
-        // Sub 총알 발사 (좌우)
+        // Sub 총알 발사
         SpawnBullet(SubBulletPrefab, SubFirePositionLeft);
         SpawnBullet(SubBulletPrefab, SubFirePositionRight);
     }

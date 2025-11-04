@@ -69,7 +69,7 @@ public class PlayerMove : MonoBehaviour
             return (_originPosition - transform.position).normalized;
         }
 
-        // 일반 이동 (WASD or Arrow Keys)
+        // 일반 이동 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         return new Vector2(h, v).normalized;
@@ -79,7 +79,7 @@ public class PlayerMove : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        // 화면 경계를 넘으면 반대편으로 나옴 (Wrap around)
+        // 화면 경계를 넘으면 반대편으로 나옴
         pos.x = WrapCoordinate(pos.x, XMin, XMax);
         pos.y = WrapCoordinate(pos.y, YMin, YMax);
 
