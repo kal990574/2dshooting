@@ -108,7 +108,7 @@ MonoBehaviour:
   MoveMode: 1
   HorizontalSpeed: 3
   HorizontalRange: 1
-  RotationSpeed: 720
+  RotationSpeed: 480
   Damage: 60
 --- !u!60 &-5287792127636884450
 PolygonCollider2D:
