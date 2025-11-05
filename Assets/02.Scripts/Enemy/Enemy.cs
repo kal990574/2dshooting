@@ -8,23 +8,32 @@ public class Enemy : MonoBehaviour
     public float Speed = 3f;
 
     [Header("체력 설정")]
-    public float Health = 100f;
+    public float MaxHealth = 200f;
+    public float CurrentHealth;
+
+    void Start()
+    {
+        CurrentHealth = MaxHealth;
+    }
 
     void Update()
     {
         transform.Translate(Vector3.down * (Speed * Time.deltaTime));
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void TakeDamage(float damage)
     {
-        if (other.CompareTag("Bullet"))
+        CurrentHealth -= damage;
+        // Debug.Log($"Enemy HP: {CurrentHealth}/{MaxHealth}");
+
+        if (CurrentHealth <= 0)
         {
-            Bullet bullet = other.GetComponent<Bullet>();
-            Health -= bullet.Damage;
-            if (Health <= 0)
-            {
-                Destroy(gameObject);
-            }
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

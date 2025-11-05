@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     public float YMax = 9f;
 
     [Header("속도 설정")]
-    public float BaseSpeed = 2f;
+    public float BaseSpeed = 4f;
     public float SpeedStep = 1f;
     public float SpeedMul = 1.5f;
 
