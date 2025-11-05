@@ -26,6 +26,8 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        if (EnemyPrefab == null) return;
+
         float randomX = Random.Range(SpawnXMin, SpawnXMax);
         Vector3 spawnPosition = new Vector3(randomX, SpawnYPosition, 0f);
 

@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,13 +6,13 @@ public class Enemy : MonoBehaviour
     [Header("이동 설정")]
     public float Speed = 3f;
 
-    [Header("체력 설정")]
-    public float MaxHealth = 200f;
-    public float CurrentHealth;
+    private float _maxHealth = 200f;
+    private float _currentHealth = 0f;
+    private float _damage = 1f;
 
     void Start()
     {
-        CurrentHealth = MaxHealth;
+        _currentHealth = _maxHealth;
     }
 
     void Update()
@@ -21,12 +20,21 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.down * (Speed * Time.deltaTime));
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Player player = other.GetComponent<Player>();
+            player.TakeDamage(_damage);
+
+            Die();
+        }
+    }
+
     public void TakeDamage(float damage)
     {
-        CurrentHealth -= damage;
-        // Debug.Log($"Enemy HP: {CurrentHealth}/{MaxHealth}");
-
-        if (CurrentHealth <= 0)
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
         {
             Die();
         }

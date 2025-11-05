@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -102,18 +101,24 @@ public class Bullet : MonoBehaviour
 
     private void MoveRotating()
     {
-        // 나선형 회전 방식
         transform.Translate(Vector3.up * (CurrentSpeed * Time.deltaTime));
         transform.Rotate(0f, 0f, RotationSpeed * Time.deltaTime);
         
         transform.position += Vector3.up * (CurrentSpeed * Time.deltaTime);
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Hitbox"))
         {
-            Destroy(gameObject);
+            Hitbox hitbox = other.GetComponent<Hitbox>();
+            hitbox.TakeDamage(Damage);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
