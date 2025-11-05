@@ -87,7 +87,7 @@ public class PlayerFire : MonoBehaviour
         if (bulletPrefab != null && firePosition != null)
         {
             GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position =  firePosition.position;
+            bullet.transform.position = firePosition.position;
         }
     }
 }
