@@ -6,6 +6,9 @@ public class Enemy : MonoBehaviour
     [Header("이동 설정")]
     public float Speed = 3f;
 
+    [Header("넉백 설정")]
+    public float KnockbackForce = 2f;
+
     private float _maxHealth = 200f;
     private float _currentHealth = 0f;
     private float _damage = 1f;
@@ -38,6 +41,11 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void ApplyKnockback()
+    {
+        transform.position += Vector3.up * KnockbackForce;
     }
 
     private void Die()
