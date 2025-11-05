@@ -1,12 +1,13 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public enum MovementMode
     {
-        Straight = 0,      // 직선
-        SideToSide = 1,    // 좌우 이동 (S자)
-        Rotating = 2       // 회전하며 상승
+        Straight = 0,      
+        SideToSide = 1,    
+        Rotating = 2       
     }
 
     [Header("Speed Settings")]
@@ -23,7 +24,7 @@ public class Bullet : MonoBehaviour
     public float HorizontalRange = 1f;
 
     [Header("Rotating Settings")]
-    public float RotationSpeed = 720f;
+    public float RotationSpeed = 480f;
 
     // Private variables
     private float _startX;
@@ -104,5 +105,14 @@ public class Bullet : MonoBehaviour
         transform.Rotate(0f, 0f, RotationSpeed * Time.deltaTime);
         
         transform.position += Vector3.up * (CurrentSpeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") == false) return;
+        
+            Destroy(gameObject);
+            Enemy enemy = other.GetComponent<Enemy>();
+            Destroy(other.gameObject);
     }
 }

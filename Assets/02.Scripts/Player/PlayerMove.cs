@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Movement Boundary")]
-    public float XMin = -2f;
-    public float XMax = 2f;
-    public float YMin = -5f;
-    public float YMax = 5f;
+    public float XMin = -4f;
+    public float XMax = 4f;
+    public float YMin = -9f;
+    public float YMax = 9f;
 
     [Header("Speed Settings")]
     public float BaseSpeed = 2f;
