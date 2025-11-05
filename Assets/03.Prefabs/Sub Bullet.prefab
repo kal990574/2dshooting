@@ -105,10 +105,13 @@ MonoBehaviour:
   EndSpeed: 7
   AccelerationTime: 5
   CurrentSpeed: 0
-  MoveMode: 2
+  MoveMode: 3
   HorizontalSpeed: 3
   HorizontalRange: 1
   RotationSpeed: 480
+  BezierControlPoint1: {x: 2, y: 5, z: 0}
+  BezierControlPoint2: {x: -2, y: 10, z: 0}
+  BezierDuration: 2
   Damage: 40
 --- !u!60 &6727183913059172923
 PolygonCollider2D:
