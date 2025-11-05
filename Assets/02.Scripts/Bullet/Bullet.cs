@@ -5,28 +5,30 @@ public class Bullet : MonoBehaviour
 {
     public enum MovementMode
     {
-        Straight = 0,      
-        SideToSide = 1,    
-        Rotating = 2       
+        Straight = 0,      // 직선
+        SideToSide = 1,    // 좌우 이동
+        Rotating = 2       // 나선형
     }
 
-    [Header("Speed Settings")]
+    [Header("속도 설정")]
     public float StartSpeed = 1f;
     public float EndSpeed = 7f;
     public float AccelerationTime = 1.2f;
     public float CurrentSpeed;
 
-    [Header("Move Settings")]
+    [Header("이동 설정")]
     public MovementMode MoveMode = MovementMode.Straight;
 
-    [Header("Side to Side Settings")]
+    [Header("좌우 이동 설정")]
     public float HorizontalSpeed = 3f;
     public float HorizontalRange = 1f;
 
-    [Header("Rotating Settings")]
+    [Header("회전 설정")]
     public float RotationSpeed = 480f;
 
-    // Private variables
+    [Header("데미지 설정")]
+    public float Damage = 10f;
+
     private float _startX;
     private float _horizontalDirection = 1f;
 
@@ -83,7 +85,7 @@ public class Bullet : MonoBehaviour
         Vector3 newPos = transform.position;
         newPos.x += horizontalMovement;
 
-        // 경계 체크 및 방향 전환
+        // 방향 전환
         if (newPos.x <= _startX - HorizontalRange)
         {
             newPos.x = _startX - HorizontalRange;
@@ -109,10 +111,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") == false) return;
-        
+        if (other.CompareTag("Enemy"))
+        {
             Destroy(gameObject);
-            Enemy enemy = other.GetComponent<Enemy>();
-            Destroy(other.gameObject);
+        }
     }
 }

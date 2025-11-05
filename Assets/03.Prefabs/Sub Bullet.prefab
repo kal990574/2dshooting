@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6727183913059172923}
   m_Layer: 0
   m_Name: Sub Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   HorizontalSpeed: 3
   HorizontalRange: 1
   RotationSpeed: 480
+  Damage: 40
 --- !u!60 &6727183913059172923
 PolygonCollider2D:
   m_ObjectHideFlags: 0

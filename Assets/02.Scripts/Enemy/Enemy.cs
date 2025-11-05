@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float Speed = 1f;
+    [Header("이동 설정")]
+    public float Speed = 3f;
+
+    [Header("체력 설정")]
     public float Health = 100f;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -18,10 +17,14 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+            Bullet bullet = other.GetComponent<Bullet>();
+            Health -= bullet.Damage;
+            if (Health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

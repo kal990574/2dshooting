@@ -10,21 +10,20 @@ public class PlayerFire : MonoBehaviour
         Manual = 2     
     }
 
-    [Header("Bullet Prefabs")]
+    [Header("총알 프리팹")]
     public GameObject MainBulletPrefab;
     public GameObject SubBulletPrefab;
 
-    [Header("Fire Positions")]
+    [Header("발사 위치")]
     public Transform MainFirePositionLeft;
     public Transform MainFirePositionRight;
     public Transform SubFirePositionLeft;
     public Transform SubFirePositionRight;
 
-    [Header("Fire Settings")]
+    [Header("발사 설정")]
     public float FireCooldown = 0.6f;
     public FireMode CurrentFireMode = FireMode.Auto;
 
-    // Private variables
     private float _lastFireTime = -1f;
 
     private void Update()
@@ -35,13 +34,13 @@ public class PlayerFire : MonoBehaviour
 
     private void HandleFireModeInput()
     {
-        // 1: 자동 공격 모드
+        // 자동 공격
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CurrentFireMode = FireMode.Auto;
         }
 
-        // 2: 수동 공격 모드
+        // 수동 공격
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CurrentFireMode = FireMode.Manual;
@@ -55,12 +54,10 @@ public class PlayerFire : MonoBehaviour
         switch (CurrentFireMode)
         {
             case FireMode.Auto:
-                // 자동 공격: 쿨다운마다 자동 발사
                 shouldFire = true;
                 break;
 
             case FireMode.Manual:
-                // 수동 공격: Space를 누르고 있을 때만 발사
                 shouldFire = Input.GetKey(KeyCode.Space);
                 break;
         }
@@ -79,11 +76,8 @@ public class PlayerFire : MonoBehaviour
 
     private void Fire()
     {
-        // Main 총알 발사
         SpawnBullet(MainBulletPrefab, MainFirePositionLeft);
         SpawnBullet(MainBulletPrefab, MainFirePositionRight);
-
-        // Sub 총알 발사
         SpawnBullet(SubBulletPrefab, SubFirePositionLeft);
         SpawnBullet(SubBulletPrefab, SubFirePositionRight);
     }
@@ -92,7 +86,8 @@ public class PlayerFire : MonoBehaviour
     {
         if (bulletPrefab != null && firePosition != null)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePosition.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab);
+            bullet.transform.position =  firePosition.position;
         }
     }
 }

@@ -136,9 +136,12 @@ GameObject:
   - component: {fileID: 7326680106953955194}
   - component: {fileID: 25233046245973555}
   - component: {fileID: 8067787774944297535}
+  - component: {fileID: 7336137348490296786}
+  - component: {fileID: 1872213688801455279}
+  - component: {fileID: 1440772096647312937}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,13 +232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b99c692b68ce7e40a3f0a682fc8d986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab1: {fileID: 8735146429507931707, guid: acf693d0816e4bb45bc501b46027ad46, type: 3}
-  BulletPrefab2: {fileID: 8735146429507931707, guid: bf745ed06fd2b9e478c57f265555fb47, type: 3}
-  FirePosition1: {fileID: 8336415451501836904}
-  FirePosition2: {fileID: 7829907624741379564}
-  FirePosition3: {fileID: 5796775146549417431}
-  FirePosition4: {fileID: 4203933198134132424}
+  MainBulletPrefab: {fileID: 8735146429507931707, guid: acf693d0816e4bb45bc501b46027ad46, type: 3}
+  SubBulletPrefab: {fileID: 8735146429507931707, guid: bf745ed06fd2b9e478c57f265555fb47, type: 3}
+  MainFirePositionLeft: {fileID: 7829907624741379564}
+  MainFirePositionRight: {fileID: 8336415451501836904}
+  SubFirePositionLeft: {fileID: 5796775146549417431}
+  SubFirePositionRight: {fileID: 4203933198134132424}
   FireCooldown: 0.6
+  CurrentFireMode: 1
 --- !u!114 &8067787774944297535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,11 +252,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8753007bc0c2e3b4cad398a7053d6aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XMin: -2
-  XMax: 2
-  YMin: -5
-  YMax: 5
+  XMin: -4
+  XMax: 4
+  YMin: -9
+  YMax: 9
+  BaseSpeed: 4
   SpeedStep: 1
   SpeedMul: 1.5
-  BaseSpeed: 2
   CurrentSpeed: 0
+--- !u!50 &7336137348490296786
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1872213688801455279
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
+--- !u!114 &1440772096647312937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2bad88bc7078e4980ab3b0a99d6b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3
+  CurrentHealth: 0
