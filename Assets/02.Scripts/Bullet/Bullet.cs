@@ -26,29 +26,39 @@ public class Bullet : MonoBehaviour
     [Header("회전 설정")]
     public float RotationSpeed = 480f;
 
+    [Header("베지어 곡선 설정")]
+    public float BezierControlX1 = 8f;
+    public float BezierControlY1 = -13f;
+    public float BezierControlX2 = 2f;
+    public float BezierControlY2 = 8f;
+    public float BezierEndY = 20f;
+    public float BezierDuration = 2.0f;
+
     [Header("데미지 설정")]
     public float Damage = 10f;
 
     private float _startX;
     private float _horizontalDirection = 1f;
-    //bz
-    private Vector3 _p1, _p2, _p3, _p4;
-    private float _t;
-    private float _duration = 1.0f;
+    // 베지어 곡선 값
+    private Vector3 _bezierStartPoint;
+    private Vector3 _bezierControlPoint1;
+    private Vector3 _bezierControlPoint2;
+    private Vector3 _bezierEndPoint;
+    private float _bezierTime;
 
     void Start()
     {
         CurrentSpeed = StartSpeed;
         _startX = transform.position.x;
 
-        // 랜덤 
+        // 랜덤 부호로 베지어 곡선 방향 설정
         float randomSign = Random.value > 0.5f ? 1f : -1f;
 
-        _p1 = transform.position;
-        _p2 = new Vector3(8f * randomSign, -13f, 0f);
-        _p3 = new Vector3(2f * randomSign, 8f, 0f);
-        _p4 = new Vector3(0f, 30f, 0f);
-        _t  = 0f;
+        _bezierStartPoint = transform.position;
+        _bezierControlPoint1 = new Vector3(BezierControlX1 * randomSign, BezierControlY1, 0f);
+        _bezierControlPoint2 = new Vector3(BezierControlX2 * randomSign, BezierControlY2, 0f);
+        _bezierEndPoint = new Vector3(0f, BezierEndY, 0f);
+        _bezierTime = 0f;
     }
 
     void Update()
@@ -126,12 +136,14 @@ public class Bullet : MonoBehaviour
     
     private void MoveBezier()
     {
-        if (_t <= 1f)
+        if (_bezierTime <= 1f)
         {
-            _t += Time.deltaTime / _duration;
-            transform.position = EvaluateBezier(_p1, _p2, _p3, _p4, _t);
+            _bezierTime += Time.deltaTime / BezierDuration;
+            transform.position = EvaluateBezier(_bezierStartPoint, _bezierControlPoint1,
+                                               _bezierControlPoint2, _bezierEndPoint, _bezierTime);
         }
     }
+    
     private Vector3 EvaluateBezier(Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4, float t)
     {
         Vector3 a = Vector3.Lerp(p1, p2, t);
@@ -141,6 +153,7 @@ public class Bullet : MonoBehaviour
         Vector3 e = Vector3.Lerp(b, c, t);
         return Vector3.Lerp(d, e, t);
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Hitbox"))

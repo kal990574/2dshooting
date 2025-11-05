@@ -109,8 +109,11 @@ MonoBehaviour:
   HorizontalSpeed: 3
   HorizontalRange: 1
   RotationSpeed: 480
-  BezierControlPoint1: {x: 2, y: 5, z: 0}
-  BezierControlPoint2: {x: -2, y: 10, z: 0}
+  BezierControlX1: 8
+  BezierControlY1: -13
+  BezierControlX2: 2
+  BezierControlY2: 8
+  BezierEndY: 20
   BezierDuration: 2
   Damage: 40
 --- !u!60 &6727183913059172923
