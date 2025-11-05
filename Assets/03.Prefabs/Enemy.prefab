@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 684323863338219373}
   - component: {fileID: 100021046316004167}
   m_Layer: 0
-  m_Name: FrontHitbox
+  m_Name: BodyHitbox
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,8 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543ceac687ff8804697c96ec63c36f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageMultiplier: 1.5
-  HitboxName: Front
+  DamageMultiplier: 0.8
 --- !u!1 &4348394550000795763
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +104,7 @@ GameObject:
   - component: {fileID: 4213158559993615202}
   - component: {fileID: 6196877655809098536}
   m_Layer: 0
-  m_Name: SideHitbox
+  m_Name: HeadHitbox
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageMultiplier: 1
-  HitboxName: Side
 --- !u!1 &7549354338114261442
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  MaxHealth: 200
-  CurrentHealth: 0
 --- !u!50 &7376190865267679805
 Rigidbody2D:
   serializedVersion: 5
