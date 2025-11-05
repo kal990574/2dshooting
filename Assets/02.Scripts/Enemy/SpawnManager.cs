@@ -4,7 +4,7 @@ public class SpawnManager : MonoBehaviour
 {
     [Header("스폰 설정")]
     public GameObject EnemyPrefab;
-    public float SpawnInterval = 1f;
+    public float SpawnInterval = 0.1f;
 
     [Header("스폰 포지션")]
     public float SpawnYPosition = 10f;
@@ -21,6 +21,7 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnEnemy();
             _spawnTimer = 0f;
+            SpawnInterval = Random.Range(0.1f, 1f);
         }
     }
 
