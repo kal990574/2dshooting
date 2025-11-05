@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [Header("Movement Boundary")]
+    [Header("이동 범위")]
     public float XMin = -4f;
     public float XMax = 4f;
     public float YMin = -9f;
     public float YMax = 9f;
 
-    [Header("Speed Settings")]
+    [Header("속도 설정")]
     public float BaseSpeed = 2f;
     public float SpeedStep = 1f;
     public float SpeedMul = 1.5f;
 
-    [Header("Runtime Info")]
+    [Header("실행 정보")]
     public float CurrentSpeed = 0f;
 
-    // Private variables
     private Vector3 _originPosition;
 
     void Start()
@@ -35,13 +34,13 @@ public class PlayerMove : MonoBehaviour
 
     private void HandleSpeedInput()
     {
-        // Q: 속도 증가
+        // 속도 증가
         if (Input.GetKeyDown(KeyCode.Q))
         {
             BaseSpeed += SpeedStep;
         }
 
-        // E: 속도 감소
+        // 속도 감소
         if (Input.GetKeyDown(KeyCode.E))
         {
             BaseSpeed = Mathf.Max(0f, BaseSpeed - SpeedStep);
@@ -63,13 +62,12 @@ public class PlayerMove : MonoBehaviour
 
     private Vector3 GetMoveDirection()
     {
-        // R: 원점으로 자동 귀환
+        // 원점으로 이동
         if (Input.GetKey(KeyCode.R))
         {
             return (_originPosition - transform.position).normalized;
         }
 
-        // 일반 이동 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         return new Vector2(h, v).normalized;
