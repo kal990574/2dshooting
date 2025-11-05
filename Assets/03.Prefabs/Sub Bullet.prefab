@@ -101,21 +101,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b4c3b17ceca6f4c8dee6abc60c6975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartSpeed: 1
-  EndSpeed: 7
-  AccelerationTime: 5
-  CurrentSpeed: 0
-  MoveMode: 3
-  HorizontalSpeed: 3
-  HorizontalRange: 1
-  RotationSpeed: 480
-  BezierControlX1: 8
-  BezierControlY1: -13
-  BezierControlX2: 2
-  BezierControlY2: 8
-  BezierEndY: 20
-  BezierDuration: 2
-  Damage: 40
+  _startSpeed: 1
+  _endSpeed: 7
+  _accelerationTime: 1.2
+  _currentSpeed: 0
+  _moveMode: 3
+  _horizontalSpeed: 3
+  _horizontalRange: 1
+  _rotationSpeed: 480
+  _bezierControlX1: 8
+  _bezierControlY1: -13
+  _bezierControlX2: 2
+  _bezierControlY2: 8
+  _bezierEndY: 20
+  _bezierDuration: 2
+  _damage: 10
 --- !u!60 &6727183913059172923
 PolygonCollider2D:
   m_ObjectHideFlags: 0

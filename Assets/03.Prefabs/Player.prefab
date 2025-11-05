@@ -232,14 +232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b99c692b68ce7e40a3f0a682fc8d986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainBulletPrefab: {fileID: 8735146429507931707, guid: acf693d0816e4bb45bc501b46027ad46, type: 3}
-  SubBulletPrefab: {fileID: 8735146429507931707, guid: bf745ed06fd2b9e478c57f265555fb47, type: 3}
-  MainFirePositionLeft: {fileID: 7829907624741379564}
-  MainFirePositionRight: {fileID: 8336415451501836904}
-  SubFirePositionLeft: {fileID: 5796775146549417431}
-  SubFirePositionRight: {fileID: 4203933198134132424}
-  FireCooldown: 0.6
-  CurrentFireMode: 1
+  _mainBulletPrefab: {fileID: 8735146429507931707, guid: acf693d0816e4bb45bc501b46027ad46, type: 3}
+  _subBulletPrefab: {fileID: 8735146429507931707, guid: bf745ed06fd2b9e478c57f265555fb47, type: 3}
+  _mainFirePositionLeft: {fileID: 7829907624741379564}
+  _mainFirePositionRight: {fileID: 8336415451501836904}
+  _subFirePositionLeft: {fileID: 5796775146549417431}
+  _subFirePositionRight: {fileID: 4203933198134132424}
+  _fireCooldown: 0.3
+  _currentFireMode: 1
 --- !u!114 &8067787774944297535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,14 +252,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8753007bc0c2e3b4cad398a7053d6aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XMin: -4
-  XMax: 4
-  YMin: -9
-  YMax: 9
-  BaseSpeed: 4
-  SpeedStep: 1
-  SpeedMul: 1.5
-  CurrentSpeed: 0
+  _xMin: -4
+  _xMax: 4
+  _yMin: -9
+  _yMax: 9
+  _baseSpeed: 4
+  _speedStep: 1
+  _speedMul: 1.5
+  _currentSpeed: 0
 --- !u!50 &7336137348490296786
 Rigidbody2D:
   serializedVersion: 5
@@ -345,3 +345,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2bad88bc7078e4980ab3b0a99d6b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 3

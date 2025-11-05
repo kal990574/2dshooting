@@ -91,7 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543ceac687ff8804697c96ec63c36f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageMultiplier: 0.8
+  _damageMultiplier: 0.8
+  _criticalChance: 30
+  _criticalMultiplier: 1.5
 --- !u!1 &4348394550000795763
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543ceac687ff8804697c96ec63c36f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageMultiplier: 1
+  _damageMultiplier: 1
+  _criticalChance: 30
+  _criticalMultiplier: 1.5
 --- !u!1 &7549354338114261442
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7761afd72c1bb48985cdca3528c2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  _speed: 3
+  _knockbackForce: 2
 --- !u!50 &7376190865267679805
 Rigidbody2D:
   serializedVersion: 5
