@@ -11,18 +11,18 @@ public class PlayerFire : MonoBehaviour
     }
 
     [Header("총알 프리팹")]
-    public GameObject MainBulletPrefab;
-    public GameObject SubBulletPrefab;
+    [SerializeField] private GameObject _mainBulletPrefab;
+    [SerializeField] private GameObject _subBulletPrefab;
 
     [Header("발사 위치")]
-    public Transform MainFirePositionLeft;
-    public Transform MainFirePositionRight;
-    public Transform SubFirePositionLeft;
-    public Transform SubFirePositionRight;
+    [SerializeField] private Transform _mainFirePositionLeft;
+    [SerializeField] private Transform _mainFirePositionRight;
+    [SerializeField] private Transform _subFirePositionLeft;
+    [SerializeField] private Transform _subFirePositionRight;
 
     [Header("발사 설정")]
-    public float FireCooldown = 0.6f;
-    public FireMode CurrentFireMode = FireMode.Auto;
+    [SerializeField] private float _fireCooldown = 0.6f;
+    [SerializeField] private FireMode _currentFireMode = FireMode.Auto;
 
     private float _lastFireTime = -1f;
 
@@ -37,13 +37,13 @@ public class PlayerFire : MonoBehaviour
         // 자동 공격
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            CurrentFireMode = FireMode.Auto;
+            _currentFireMode = FireMode.Auto;
         }
 
         // 수동 공격
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            CurrentFireMode = FireMode.Manual;
+            _currentFireMode = FireMode.Manual;
         }
     }
 
@@ -51,7 +51,7 @@ public class PlayerFire : MonoBehaviour
     {
         bool shouldFire = false;
 
-        switch (CurrentFireMode)
+        switch (_currentFireMode)
         {
             case FireMode.Auto:
                 shouldFire = true;
@@ -71,15 +71,15 @@ public class PlayerFire : MonoBehaviour
 
     private bool CanFire()
     {
-        return Time.time >= _lastFireTime + FireCooldown;
+        return Time.time >= _lastFireTime + _fireCooldown;
     }
 
     private void Fire()
     {
-        SpawnBullet(MainBulletPrefab, MainFirePositionLeft);
-        SpawnBullet(MainBulletPrefab, MainFirePositionRight);
-        SpawnBullet(SubBulletPrefab, SubFirePositionLeft);
-        SpawnBullet(SubBulletPrefab, SubFirePositionRight);
+        SpawnBullet(_mainBulletPrefab, _mainFirePositionLeft);
+        SpawnBullet(_mainBulletPrefab, _mainFirePositionRight);
+        SpawnBullet(_subBulletPrefab, _subFirePositionLeft);
+        SpawnBullet(_subBulletPrefab, _subFirePositionRight);
     }
 
     private void SpawnBullet(GameObject bulletPrefab, Transform firePosition)

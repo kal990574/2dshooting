@@ -4,10 +4,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("이동 설정")]
-    public float Speed = 3f;
+    [SerializeField] private float _speed = 3f;
 
     [Header("넉백 설정")]
-    public float KnockbackForce = 2f;
+    [SerializeField] private float _knockbackForce = 2f;
 
     private float _maxHealth = 200f;
     private float _currentHealth = 0f;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.down * (Speed * Time.deltaTime));
+        transform.Translate(Vector3.down * (_speed * Time.deltaTime));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
 
     public void ApplyKnockback()
     {
-        transform.position += Vector3.up * KnockbackForce;
+        transform.position += Vector3.up * _knockbackForce;
     }
 
     private void Die()

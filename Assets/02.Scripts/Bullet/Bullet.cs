@@ -11,31 +11,31 @@ public class Bullet : MonoBehaviour
     }
 
     [Header("속도 설정")]
-    public float StartSpeed = 1f;
-    public float EndSpeed = 7f;
-    public float AccelerationTime = 1.2f;
-    public float CurrentSpeed;
+    [SerializeField] private float _startSpeed = 1f;
+    [SerializeField] private float _endSpeed = 7f;
+    [SerializeField] private float _accelerationTime = 1.2f;
+    [SerializeField] private float _currentSpeed;
 
     [Header("이동 설정")]
-    public MovementMode MoveMode = MovementMode.Straight;
+    [SerializeField] private MovementMode _moveMode = MovementMode.Straight;
 
     [Header("좌우 이동 설정")]
-    public float HorizontalSpeed = 3f;
-    public float HorizontalRange = 1f;
+    [SerializeField] private float _horizontalSpeed = 3f;
+    [SerializeField] private float _horizontalRange = 1f;
 
     [Header("회전 설정")]
-    public float RotationSpeed = 480f;
+    [SerializeField] private float _rotationSpeed = 480f;
 
     [Header("베지어 곡선 설정")]
-    public float BezierControlX1 = 8f;
-    public float BezierControlY1 = -13f;
-    public float BezierControlX2 = 2f;
-    public float BezierControlY2 = 8f;
-    public float BezierEndY = 20f;
-    public float BezierDuration = 2.0f;
+    [SerializeField] private float _bezierControlX1 = 8f;
+    [SerializeField] private float _bezierControlY1 = -13f;
+    [SerializeField] private float _bezierControlX2 = 2f;
+    [SerializeField] private float _bezierControlY2 = 8f;
+    [SerializeField] private float _bezierEndY = 20f;
+    [SerializeField] private float _bezierDuration = 2.0f;
 
     [Header("데미지 설정")]
-    public float Damage = 10f;
+    [SerializeField] private float _damage = 10f;
 
     private float _startX;
     private float _horizontalDirection = 1f;
@@ -48,16 +48,16 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        CurrentSpeed = StartSpeed;
+        _currentSpeed = _startSpeed;
         _startX = transform.position.x;
 
         // 랜덤 부호로 베지어 곡선 방향 설정
         float randomSign = Random.value > 0.5f ? 1f : -1f;
 
         _bezierStartPoint = transform.position;
-        _bezierControlPoint1 = new Vector3(BezierControlX1 * randomSign, BezierControlY1, 0f);
-        _bezierControlPoint2 = new Vector3(BezierControlX2 * randomSign, BezierControlY2, 0f);
-        _bezierEndPoint = new Vector3(0f, BezierEndY, 0f);
+        _bezierControlPoint1 = new Vector3(_bezierControlX1 * randomSign, _bezierControlY1, 0f);
+        _bezierControlPoint2 = new Vector3(_bezierControlX2 * randomSign, _bezierControlY2, 0f);
+        _bezierEndPoint = new Vector3(0f, _bezierEndY, 0f);
         _bezierTime = 0f;
     }
 
@@ -69,17 +69,17 @@ public class Bullet : MonoBehaviour
 
     private void UpdateSpeed()
     {
-        if (CurrentSpeed < EndSpeed)
+        if (_currentSpeed < _endSpeed)
         {
-            float acceleration = (EndSpeed - StartSpeed) / AccelerationTime;
-            CurrentSpeed += acceleration * Time.deltaTime;
-            CurrentSpeed = Mathf.Min(CurrentSpeed, EndSpeed);
+            float acceleration = (_endSpeed - _startSpeed) / _accelerationTime;
+            _currentSpeed += acceleration * Time.deltaTime;
+            _currentSpeed = Mathf.Min(_currentSpeed, _endSpeed);
         }
     }
 
     private void UpdateMovement()
     {
-        switch (MoveMode)
+        switch (_moveMode)
         {
             case MovementMode.Straight:
                 MoveStraight();
@@ -98,28 +98,28 @@ public class Bullet : MonoBehaviour
 
     private void MoveStraight()
     {
-        transform.position += Vector3.up * (CurrentSpeed * Time.deltaTime);
+        transform.position += Vector3.up * (_currentSpeed * Time.deltaTime);
     }
 
     private void MoveSideToSide()
     {
         // 수직 이동
-        transform.position += Vector3.up * (CurrentSpeed * Time.deltaTime);
+        transform.position += Vector3.up * (_currentSpeed * Time.deltaTime);
 
         // 수평 이동
-        float horizontalMovement = _horizontalDirection * HorizontalSpeed * Time.deltaTime;
+        float horizontalMovement = _horizontalDirection * _horizontalSpeed * Time.deltaTime;
         Vector3 newPos = transform.position;
         newPos.x += horizontalMovement;
 
         // 방향 전환
-        if (newPos.x <= _startX - HorizontalRange)
+        if (newPos.x <= _startX - _horizontalRange)
         {
-            newPos.x = _startX - HorizontalRange;
+            newPos.x = _startX - _horizontalRange;
             _horizontalDirection = 1f;
         }
-        else if (newPos.x >= _startX + HorizontalRange)
+        else if (newPos.x >= _startX + _horizontalRange)
         {
-            newPos.x = _startX + HorizontalRange;
+            newPos.x = _startX + _horizontalRange;
             _horizontalDirection = -1f;
         }
 
@@ -128,17 +128,17 @@ public class Bullet : MonoBehaviour
 
     private void MoveRotating()
     {
-        transform.Translate(Vector3.up * (CurrentSpeed * Time.deltaTime));
-        transform.Rotate(0f, 0f, RotationSpeed * Time.deltaTime);
-        
-        transform.position += Vector3.up * (CurrentSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * (_currentSpeed * Time.deltaTime));
+        transform.Rotate(0f, 0f, _rotationSpeed * Time.deltaTime);
+
+        transform.position += Vector3.up * (_currentSpeed * Time.deltaTime);
     }
     
     private void MoveBezier()
     {
         if (_bezierTime <= 1f)
         {
-            _bezierTime += Time.deltaTime / BezierDuration;
+            _bezierTime += Time.deltaTime / _bezierDuration;
             transform.position = EvaluateBezier(_bezierStartPoint, _bezierControlPoint1,
                                                _bezierControlPoint2, _bezierEndPoint, _bezierTime);
         }
@@ -159,7 +159,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Hitbox"))
         {
             Hitbox hitbox = other.GetComponent<Hitbox>();
-            hitbox.TakeDamage(Damage);
+            hitbox.TakeDamage(_damage);
             Die();
         }
     }

@@ -384,11 +384,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152b344ff8e165a4588cd09123b37c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 7549354338114261442, guid: 9e262cd6758e43043aeb02163b6183ef, type: 3}
-  SpawnInterval: 0.1
-  SpawnYPosition: 10
-  SpawnXMin: -4
-  SpawnXMax: 4
+  _enemyPrefab: {fileID: 7549354338114261442, guid: 9e262cd6758e43043aeb02163b6183ef, type: 3}
+  _spawnInterval: 0.1
+  _spawnYPosition: 10
+  _spawnXMin: -4
+  _spawnXMax: 4
 --- !u!1001 &3070986804067214490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,6 +400,10 @@ PrefabInstance:
     - target: {fileID: 25233046245973555, guid: 125e6d20daaae474c9a80ab51206903e, type: 3}
       propertyPath: FireCooldown
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440772096647312937, guid: 125e6d20daaae474c9a80ab51206903e, type: 3}
+      propertyPath: hi
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 8289671121820965753, guid: 125e6d20daaae474c9a80ab51206903e, type: 3}
       propertyPath: m_LocalPosition.x
