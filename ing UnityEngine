@@ -1,0 +1,180 @@
+[33mcommit b74bc255f36b60e82de17ff2f37dcef1f67cd868[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Thu Nov 6 11:08:00 2025 +0900
+
+    refactor: 주석
+
+[33mcommit 3a2b035bd11e9373899e45f817eff9113b0383a8[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Thu Nov 6 11:05:40 2025 +0900
+
+    refactor: 컴포넌트 패턴 적용
+
+[33mcommit f4082d6f35a978f601412d15036d4c096be9cdb0[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Thu Nov 6 10:54:53 2025 +0900
+
+    feat: ChasingEnemy, 상속 구조 적용
+
+[33mcommit 8f11083bf8e2c5aac883c479f5455f6e26fc4e29[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Thu Nov 6 09:57:02 2025 +0900
+
+    feat: DestroyZone 적용
+
+[33mcommit cf007ef7d3219dfdd1c4d078816d2dd9baec7572[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 16:52:38 2025 +0900
+
+    refactor: public to [SerializeField] private
+
+[33mcommit d7c17621ed419ce367e636a2ba32ef7027298a59[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 16:02:02 2025 +0900
+
+    refactor: 베지어 곡선 기능 리팩토링
+
+[33mcommit ef43021b679d10ca08704a4a9b3a8192c75519c7[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 15:38:42 2025 +0900
+
+    feat: 베지어 곡선 기능 적용
+
+[33mcommit 0d5c0120b1abc571172237ec476b4d1500c09105[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 14:47:30 2025 +0900
+
+    feat: 스폰 시간 랜덤화 적용
+
+[33mcommit ac2d28a3a87b9dd06e1a924d0330b7222aeac2dc[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 14:43:49 2025 +0900
+
+    feat: 크리티컬과 넉백 기능 적용
+
+[33mcommit c729130aa1c0ca916142780ac68bae080cb6c9e7[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 14:14:45 2025 +0900
+
+    refactor: 디미터 법칙 적용
+
+[33mcommit 28cacc7e0acc2b62b77d96965c0a1ac1ed3863fa[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 13:09:33 2025 +0900
+
+    feat: 히트박스 별 데미지 적용
+
+[33mcommit 7fedc264ec25d45e1bfe037ca4b0131d114a002f[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 12:47:58 2025 +0900
+
+    feat: 플레이어 체력, 적 스폰, 데미지 시스템 구현
+
+[33mcommit 2f792f0d4504465444cdd4f3fb0322db996b803d[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Wed Nov 5 11:05:59 2025 +0900
+
+    feat: 적 이동과 충돌 처리
+
+[33mcommit 3803593daf4a106741b87dd6f0901af19d25df63[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 16:54:08 2025 +0900
+
+    refactor: remove unnecessary comments
+
+[33mcommit 623f73e99dd7c5820605d42e5af11b97b32dcccb[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 16:50:35 2025 +0900
+
+    refactor: 1차 리펙토링
+
+[33mcommit 35bd9852c661574995167a52f63d6adf008aaaab[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 16:18:57 2025 +0900
+
+    remove rider setting
+
+[33mcommit a60e3017a7eb3c0901f6d66fecd5a89be239a889[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 16:17:21 2025 +0900
+
+    Update .gitignore
+
+[33mcommit 14489a950df79504e51c49d0365d14ccab4c1cc4[m
+Merge: af274f5 027aab9
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 16:13:45 2025 +0900
+
+    Merge branch 'main' of https://github.com/kal990574/2dshooting
+
+[33mcommit af274f51a2997c41503d85746a15c972bb7f9bb1[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 16:13:37 2025 +0900
+
+    열거형 처리할 것
+
+[33mcommit 027aab967935449d097f51d42ce842a28792fa2c[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 16:13:05 2025 +0900
+
+    Add Rider IDE files to .gitignore
+
+[33mcommit db50ccec2f8465545db313b7ed9dc913e29a6be1[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 15:29:13 2025 +0900
+
+    feat: S자 형식, 나선형 회전 기능
+
+[33mcommit 891c9ee3b3a111a1ffb4dab1cade5de16e841f82[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 13:06:19 2025 +0900
+
+    feat: 쿨타임 적용
+
+[33mcommit e6f652a562bd399aa0b7912c70427c7ddca51e6c[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 11:04:27 2025 +0900
+
+    feat: Bullet 가속도 설정
+
+[33mcommit 201e0424be7cc0cefb413feaaa3181936c803a68[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Tue Nov 4 09:59:17 2025 +0900
+
+    feat: add Bullet.cs for bullet movement
+
+[33mcommit 454b6413bee222634a48036d5f49fd3c0c014788[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Mon Nov 3 16:03:04 2025 +0900
+
+    refactor: private to public
+
+[33mcommit 31ab8dc338cf6971e1f9d301734a208743949e65[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Mon Nov 3 15:50:08 2025 +0900
+
+    refactor: claude CLI refactoring
+
+[33mcommit 925f8c522d6a7f7b5d45c69f878f61b4d6953adf[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Mon Nov 3 14:13:15 2025 +0900
+
+    feat : direction vector normalized
+
+[33mcommit 20023fb46e2480c6ec6dd059eb667e52c58ed962[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Mon Nov 3 13:43:21 2025 +0900
+
+    feat : 플레이어 이동 경계 기능 추가
+
+[33mcommit de5be8242cebf03ca7c29d105bd591db2160d474[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Mon Nov 3 11:09:40 2025 +0900
+
+    feat: add PlayerMove.cs for player movement
+
+[33mcommit 97bd53cedb7590bcce59e085a688b2d53602004c[m
+Author: mambasa <101706131+kal990574@users.noreply.github.com>
+Date:   Mon Nov 3 10:12:40 2025 +0900
+
+    Initial commit
