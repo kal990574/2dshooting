@@ -31,14 +31,12 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        // 스폰할 프리팹 선택 
         GameObject prefabToSpawn = Random.Range(0f, 100f) < _straightEnemyChance
             ? _straightEnemyPrefab
             : _chasingEnemyPrefab;
 
         if (prefabToSpawn == null) return;
 
-        // 랜덤 위치 생성
         float randomX = Random.Range(_spawnXMin, _spawnXMax);
         Vector3 spawnPosition = new Vector3(randomX, _spawnYPosition, 0f);
 

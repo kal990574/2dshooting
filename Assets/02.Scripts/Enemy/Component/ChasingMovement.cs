@@ -1,16 +1,11 @@
 using UnityEngine;
 
-public class ChasingEnemy : BaseEnemy
+public class ChasingMovement : MovementComponent
 {
-    [Header("이동 설정")]
-    [SerializeField] private float _speed = 3f;
-
     private Transform _playerTransform;
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
-        
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -21,7 +16,7 @@ public class ChasingEnemy : BaseEnemy
     protected override void Move()
     {
         if (_playerTransform == null) return;
-        
+
         Vector3 direction = (_playerTransform.position - transform.position).normalized;
         transform.Translate(direction * (_speed * Time.deltaTime));
     }
