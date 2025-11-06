@@ -199,7 +199,8 @@ GameObject:
   - component: {fileID: 6385577260092750125}
   - component: {fileID: 6639493620662576834}
   - component: {fileID: 1522888162589182895}
-  - component: {fileID: 7376190865267679805}
+  - component: {fileID: 7665993652258498657}
+  - component: {fileID: 4662031462715267845}
   - component: {fileID: 4676401465546720484}
   m_Layer: 0
   m_Name: ChasingEnemy
@@ -289,40 +290,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 7549354338114261442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f011dd729e4ea84e9437ba281cc9313, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f7761afd72c1bb48985cdca3528c2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockbackForce: 2
-  _maxHealth: 200
   _damage: 1
-  _speed: 2
---- !u!50 &7376190865267679805
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!114 &7665993652258498657
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7549354338114261442}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb64acb4c84246479ac54030871b516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 200
+  _knockbackForce: 2
+--- !u!114 &4662031462715267845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549354338114261442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033c71c63148f5a4e89163db20134d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
 --- !u!60 &4676401465546720484
 PolygonCollider2D:
   m_ObjectHideFlags: 0
