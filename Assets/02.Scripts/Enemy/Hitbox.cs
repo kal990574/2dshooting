@@ -9,11 +9,11 @@ public class Hitbox : MonoBehaviour
     [SerializeField] private float _criticalChance = 30f;
     [SerializeField] private float _criticalMultiplier = 1.5f;
 
-    private Enemy _parentEnemy;
+    private BaseEnemy _parentEnemy;
 
     void Start()
     {
-        _parentEnemy = GetComponentInParent<Enemy>();
+        _parentEnemy = GetComponentInParent<BaseEnemy>();
     }
 
     public void TakeDamage(float damage)
