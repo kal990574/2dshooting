@@ -115,7 +115,7 @@ MonoBehaviour:
   _bezierControlY2: 8
   _bezierEndY: 20
   _bezierDuration: 2
-  _damage: 10
+  _damage: 40
 --- !u!60 &6727183913059172923
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 23165761}
   - component: {fileID: 23165760}
   - component: {fileID: 23165759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DestroyZone (2)
   m_TagString: DestroyZone
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 218226852}
   - component: {fileID: 218226851}
   - component: {fileID: 218226850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DestroyZone (4)
   m_TagString: DestroyZone
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 421853195}
   - component: {fileID: 421853194}
   - component: {fileID: 421853193}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DestroyZone (1)
   m_TagString: DestroyZone
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 1190990422}
   - component: {fileID: 1190990423}
   - component: {fileID: 1190990424}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DestroyZone
   m_TagString: DestroyZone
   m_Icon: {fileID: 0}
@@ -1119,8 +1119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152b344ff8e165a4588cd09123b37c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 7549354338114261442, guid: 9e262cd6758e43043aeb02163b6183ef, type: 3}
+  _straightEnemyPrefab: {fileID: 7549354338114261442, guid: 9e262cd6758e43043aeb02163b6183ef, type: 3}
+  _chasingEnemyPrefab: {fileID: 7549354338114261442, guid: 27c54de1321b1834fad9649ea6e4d23e, type: 3}
   _spawnInterval: 0.1
+  _straightEnemyChance: 70
   _spawnYPosition: 10
   _spawnXMin: -4
   _spawnXMax: 4
