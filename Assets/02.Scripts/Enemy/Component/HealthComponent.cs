@@ -10,9 +10,6 @@ public class HealthComponent : MonoBehaviour
 
     private float _currentHealth;
 
-    public float CurrentHealth => _currentHealth;
-    public float MaxHealth => _maxHealth;
-
     void Start()
     {
         _currentHealth = _maxHealth;

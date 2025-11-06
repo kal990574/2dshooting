@@ -40,7 +40,6 @@ public class SpawnManager : MonoBehaviour
         float randomX = Random.Range(_spawnXMin, _spawnXMax);
         Vector3 spawnPosition = new Vector3(randomX, _spawnYPosition, 0f);
 
-        // 적 생성
         GameObject enemy = Instantiate(prefabToSpawn);
         enemy.transform.position = spawnPosition;
     }
