@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2392511123053850185}
   - component: {fileID: 579585721711917896}
   - component: {fileID: 2146797967117695350}
+  - component: {fileID: 5166077790937918291}
+  - component: {fileID: 2624448716366741575}
   - component: {fileID: 6727183913059172923}
   - component: {fileID: -2190878073270117508}
   m_Layer: 0
@@ -102,21 +104,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b4c3b17ceca6f4c8dee6abc60c6975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSpeed: 1
-  _endSpeed: 7
-  _accelerationTime: 1.2
-  _currentSpeed: 0
-  _moveMode: 3
-  _horizontalSpeed: 3
-  _horizontalRange: 1
-  _rotationSpeed: 480
+  _damage: 40
+--- !u!114 &5166077790937918291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735146429507931707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1752a2899a44fe14c9ee013ea82e849e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _bezierControlX1: 8
   _bezierControlY1: -13
   _bezierControlX2: 2
   _bezierControlY2: 8
   _bezierEndY: 20
   _bezierDuration: 2
-  _damage: 40
+--- !u!114 &2624448716366741575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735146429507931707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719cf8a5e08b23a40bbfe0a5ab8a145e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startSpeed: 1
+  _endSpeed: 7
+  _accelerationTime: 1.2
 --- !u!60 &6727183913059172923
 PolygonCollider2D:
   m_ObjectHideFlags: 0
