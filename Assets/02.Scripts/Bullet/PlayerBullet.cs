@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
     [Header("데미지 설정")]
     [SerializeField] private float _damage = 10f;

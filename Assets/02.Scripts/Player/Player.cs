@@ -2,26 +2,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth = 3f;
-    private float _currentHealth;
+    private HealthComponent _healthComponent;
 
-    void Start()
+    void Awake()
     {
-        _currentHealth = _maxHealth;
+        _healthComponent = GetComponent<HealthComponent>();
     }
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
-
-        if (_currentHealth <= 0)
+        if (_healthComponent != null)
         {
-            Die();
+            _healthComponent.TakeDamage(damage);
         }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 }

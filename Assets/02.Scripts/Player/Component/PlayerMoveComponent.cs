@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMovementComponent : MonoBehaviour
 {
     [Header("이동 범위")]
     [SerializeField] private float _xMin = -4f;

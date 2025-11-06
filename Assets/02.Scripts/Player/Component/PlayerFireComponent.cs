@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerFire : MonoBehaviour
+public class PlayerFireComponent : MonoBehaviour
 {
     public enum FireMode
     {
