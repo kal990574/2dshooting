@@ -3,10 +3,10 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour
 {
     [Header("체력 설정")]
-    [SerializeField] private float _maxHealth = 200f;
+    [SerializeField] private float _maxHealth = 300f;
 
     [Header("넉백 설정")]
-    [SerializeField] private float _knockbackForce = 2f;
+    [SerializeField] private float _knockbackForce = 1f;
 
     private float _currentHealth;
 
