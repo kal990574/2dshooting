@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils;
 
 namespace _02.Scripts.Item
 {
@@ -79,8 +80,8 @@ namespace _02.Scripts.Item
             {
                 _targetPoint = _playerTransform.position;
 
-                transform.position = BezierMovement.EvaluateBezier(_startPoint, _controlPoint1,
-                                                                    _controlPoint2, _targetPoint, t);
+                transform.position = BezierUtility.EvaluateCubic(_startPoint, _controlPoint1,
+                                                                  _controlPoint2, _targetPoint, t);
             }
             else
             {
