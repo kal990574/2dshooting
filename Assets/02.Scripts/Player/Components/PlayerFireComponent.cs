@@ -12,7 +12,8 @@ public class PlayerFireComponent : MonoBehaviour
 
     [Header("총알 프리팹")]
     [SerializeField] private GameObject _mainBulletPrefab;
-    [SerializeField] private GameObject _subBulletPrefab;
+    [SerializeField] private GameObject _subBulletPrefabLeft;
+    [SerializeField] private GameObject _subBulletPrefabRight;
 
     [Header("발사 위치")]
     [SerializeField] private Transform _mainFirePositionLeft;

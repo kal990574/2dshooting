@@ -117,8 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waitTime: 2
   _moveDuration: 1
-  _controlPoint1Offset: {x: 5, y: 2, z: 0}
-  _controlPoint2Offset: {x: 1, y: 0.5, z: 0}
+  _controlPoint1Offset: {x: 3, y: 1, z: 0}
+  _controlPoint2Offset: {x: 1, y: 1, z: 0}
 --- !u!58 &22125610474178867
 CircleCollider2D:
   m_ObjectHideFlags: 0

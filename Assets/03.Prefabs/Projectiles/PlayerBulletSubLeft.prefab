@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6727183913059172923}
   - component: {fileID: -2190878073270117508}
   m_Layer: 0
-  m_Name: PlayerBulletSub
+  m_Name: PlayerBulletSubLeft
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,12 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c963351769d4c419e9c4281043d2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bezierControlX1: 8
-  _bezierControlY1: -13
-  _bezierControlX2: 2
-  _bezierControlY2: 8
-  _bezierEndY: 20
+  _endPointPosition: {x: 0, y: 15, z: 0}
+  _controlPoint1Offset: {x: 6, y: -13, z: 0}
+  _controlPoint2Offset: {x: 2, y: 0, z: 0}
   _bezierDuration: 2
+  _bezierDirection: 0
 --- !u!114 &2624448716366741575
 MonoBehaviour:
   m_ObjectHideFlags: 0

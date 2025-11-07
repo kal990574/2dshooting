@@ -10,8 +10,8 @@ namespace _02.Scripts.Item
         [SerializeField] private float _moveDuration = 1f;
 
         [Header("베지어 곡선 제어점")]
-        [SerializeField] private Vector3 _controlPoint1Offset = new Vector3(5f, 2f, 0f);
-        [SerializeField] private Vector3 _controlPoint2Offset = new Vector3(1f, 0.5f, 0f);
+        [SerializeField] private Vector3 _controlPoint1Offset = new Vector3(3f, 1f, 0f);
+        [SerializeField] private Vector3 _controlPoint2Offset = new Vector3(1f, 1f, 0f);
 
         private Vector3 _startPoint;
         private Vector3 _controlPoint1;
@@ -58,16 +58,11 @@ namespace _02.Scripts.Item
             _startPoint = transform.position;
             _targetPoint = _playerTransform.position;
 
-            Vector3 direction = (_targetPoint - _startPoint).normalized;
-            Vector3 perpendicular = new Vector3(-direction.y, direction.x, 0f);
-
-            _controlPoint1 = _startPoint + direction * _controlPoint1Offset.x +
-                            perpendicular * _controlPoint1Offset.y +
-                            Vector3.up * _controlPoint1Offset.z;
-
-            _controlPoint2 = _targetPoint - direction * _controlPoint2Offset.x +
-                            perpendicular * _controlPoint2Offset.y -
-                            Vector3.up * _controlPoint2Offset.z;
+            (_controlPoint1, _controlPoint2) = BezierUtility.CalculateControlPoints(
+                _startPoint,
+                _targetPoint,
+                _controlPoint1Offset,
+                _controlPoint2Offset);
         }
 
         private void MoveToPlayer()
@@ -80,12 +75,8 @@ namespace _02.Scripts.Item
             {
                 _targetPoint = _playerTransform.position;
 
-                transform.position = BezierUtility.EvaluateCubic(_startPoint, _controlPoint1,
+                transform.position = BezierUtility.Evaluate(_startPoint, _controlPoint1,
                                                                   _controlPoint2, _targetPoint, t);
-            }
-            else
-            {
-                transform.position = _targetPoint;
             }
         }
     }
