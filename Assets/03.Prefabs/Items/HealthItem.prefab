@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4816243930280502299}
   - component: {fileID: 964241972703487867}
   - component: {fileID: 8534100874364934236}
+  - component: {fileID: -5774583772239884823}
   - component: {fileID: 22125610474178867}
   m_Layer: 0
   m_Name: HealthItem
@@ -102,6 +103,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthIncrease: 1
+--- !u!114 &-5774583772239884823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625095648833046817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2b639d9fb05584ba298777ec5ef866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 2
+  _moveDuration: 1
+  _controlPoint1Offset: {x: 5, y: 2, z: 0}
+  _controlPoint2Offset: {x: 1, y: 0.5, z: 0}
 --- !u!58 &22125610474178867
 CircleCollider2D:
   m_ObjectHideFlags: 0
