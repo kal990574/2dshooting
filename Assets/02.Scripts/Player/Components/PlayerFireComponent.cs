@@ -80,8 +80,8 @@ public class PlayerFireComponent : MonoBehaviour
     {
         SpawnBullet(_mainBulletPrefab, _mainFirePositionLeft);
         SpawnBullet(_mainBulletPrefab, _mainFirePositionRight);
-        SpawnBullet(_subBulletPrefab, _subFirePositionLeft);
-        SpawnBullet(_subBulletPrefab, _subFirePositionRight);
+        SpawnBullet(_subBulletPrefabLeft, _subFirePositionLeft);
+        SpawnBullet(_subBulletPrefabRight, _subFirePositionRight);
     }
 
     private void SpawnBullet(GameObject bulletPrefab, Transform firePosition)

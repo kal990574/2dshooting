@@ -117,11 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c963351769d4c419e9c4281043d2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endPointPosition: {x: 0, y: 15, z: 0}
+  _endPointPosition: {x: 0, y: 13, z: 0}
   _controlPoint1Offset: {x: 6, y: -13, z: 0}
   _controlPoint2Offset: {x: 2, y: 0, z: 0}
   _bezierDuration: 2
-  _bezierDirection: 0
+  _bezierDirection: -1
 --- !u!114 &2624448716366741575
 MonoBehaviour:
   m_ObjectHideFlags: 0

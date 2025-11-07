@@ -233,12 +233,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainBulletPrefab: {fileID: 8735146429507931707, guid: acf693d0816e4bb45bc501b46027ad46, type: 3}
-  _subBulletPrefab: {fileID: 8735146429507931707, guid: bf745ed06fd2b9e478c57f265555fb47, type: 3}
+  _subBulletPrefabLeft: {fileID: 8735146429507931707, guid: bf745ed06fd2b9e478c57f265555fb47, type: 3}
+  _subBulletPrefabRight: {fileID: 8735146429507931707, guid: 2a70b4dffe117b645a37a9588fe0c10c, type: 3}
   _mainFirePositionLeft: {fileID: 7829907624741379564}
   _mainFirePositionRight: {fileID: 8336415451501836904}
   _subFirePositionLeft: {fileID: 5796775146549417431}
   _subFirePositionRight: {fileID: 4203933198134132424}
   _fireCooldown: 0.3
+  _minFireCooldown: 0.1
   _currentFireMode: 1
 --- !u!114 &8067787774944297535
 MonoBehaviour:
