@@ -10,6 +10,8 @@ public class HealthComponent : MonoBehaviour
 
     private float _currentHealth;
 
+    public bool IsDead => _currentHealth <= 0;
+
     void Start()
     {
         _currentHealth = _maxHealth;
@@ -18,11 +20,6 @@ public class HealthComponent : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
-
-        if (_currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     public void ApplyKnockback()
@@ -30,8 +27,9 @@ public class HealthComponent : MonoBehaviour
         transform.position += Vector3.up * _knockbackForce;
     }
 
-    private void Die()
+    public void Heal(float amount)
     {
-        Destroy(gameObject);
+        _currentHealth += amount;
+        _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
     }
 }

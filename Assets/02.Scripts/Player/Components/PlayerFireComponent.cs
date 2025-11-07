@@ -22,6 +22,7 @@ public class PlayerFireComponent : MonoBehaviour
 
     [Header("발사 설정")]
     [SerializeField] private float _fireCooldown = 0.6f;
+    [SerializeField] private float _minFireCooldown = 0.1f;
     [SerializeField] private FireMode _currentFireMode = FireMode.Auto;
 
     private float _lastFireTime = -1f;
@@ -89,5 +90,11 @@ public class PlayerFireComponent : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.transform.position = firePosition.position;
         }
+    }
+
+    public void IncreaseAttackSpeed(float amount)
+    {
+        _fireCooldown -= amount;
+        _fireCooldown = Mathf.Max(_fireCooldown, _minFireCooldown);
     }
 }

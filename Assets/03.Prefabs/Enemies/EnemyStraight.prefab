@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 2487839686631497874}
   - component: {fileID: 1721905071789519365}
   - component: {fileID: 9098261334502104642}
+  - component: {fileID: -1616471836360068369}
   - component: {fileID: 4676401465546720484}
   m_Layer: 0
   m_Name: EnemyStraight
@@ -341,6 +342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 300
   _knockbackForce: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1721905071789519365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +374,25 @@ MonoBehaviour:
   _firePosition: {fileID: 7069421663663164685}
   _fireInterval: 1.5
   _autoFire: 1
+--- !u!114 &-1616471836360068369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549354338114261442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5e6ab4da4a8574f9224596aa6eb234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthItemPrefab: {fileID: 3625095648833046817, guid: 66fd96ef04ff189459bcc5ceb230ae4a, type: 3}
+  _speedItemPrefab: {fileID: 3625095648833046817, guid: 79204d6c815d97f4c84528a08566fc4f, type: 3}
+  _attackSpeedItemPrefab: {fileID: 3625095648833046817, guid: eac72cf6a4c881541ba027d04fd0c8e3, type: 3}
+  _dropChance: 50
+  _healthItemChance: 70
+  _speedItemChance: 20
+  _attackSpeedItemChance: 10
 --- !u!60 &4676401465546720484
 PolygonCollider2D:
   m_ObjectHideFlags: 0

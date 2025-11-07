@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SideToSideBulletMovement : BulletMovementComponent
+public class SideToSideMovement : BulletMovementComponent
 {
     [Header("좌우 이동 설정")]
     [SerializeField] private float _horizontalSpeed = 3f;

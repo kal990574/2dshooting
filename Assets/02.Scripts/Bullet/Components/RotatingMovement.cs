@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RotatingBulletMovement : BulletMovementComponent
+public class RotatingMovement : BulletMovementComponent
 {
     [Header("회전 설정")]
     [SerializeField] private float _rotationSpeed = 480f;

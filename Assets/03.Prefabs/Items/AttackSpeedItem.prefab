@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4816243930280502299}
   - component: {fileID: 964241972703487867}
+  - component: {fileID: -3281750901699655081}
   - component: {fileID: 22125610474178867}
-  - component: {fileID: -361719567728965184}
   m_Layer: 0
-  m_Name: Item
+  m_Name: AttackSpeedItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.93989503, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.5615012, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -89,6 +89,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3281750901699655081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625095648833046817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66d84d8fc679bd42b7981251acbdd0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackSpeedIncrease: 0.05
 --- !u!58 &22125610474178867
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -125,16 +138,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &-361719567728965184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3625095648833046817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbca624bda98466689d539a61d9e72f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedIncrease: 1

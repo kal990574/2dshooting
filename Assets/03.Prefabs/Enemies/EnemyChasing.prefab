@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 6639493620662576834}
   - component: {fileID: 1522888162589182895}
   - component: {fileID: 7665993652258498657}
+  - component: {fileID: 7876862926164084349}
   - component: {fileID: 4662031462715267845}
   - component: {fileID: 4676401465546720484}
   m_Layer: 0
@@ -308,6 +309,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 300
   _knockbackForce: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7876862926164084349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549354338114261442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5e6ab4da4a8574f9224596aa6eb234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthItemPrefab: {fileID: 3625095648833046817, guid: 66fd96ef04ff189459bcc5ceb230ae4a, type: 3}
+  _speedItemPrefab: {fileID: 3625095648833046817, guid: 79204d6c815d97f4c84528a08566fc4f, type: 3}
+  _attackSpeedItemPrefab: {fileID: 3625095648833046817, guid: eac72cf6a4c881541ba027d04fd0c8e3, type: 3}
+  _dropChance: 50
+  _healthItemChance: 70
+  _speedItemChance: 20
+  _attackSpeedItemChance: 10
 --- !u!114 &4662031462715267845
 MonoBehaviour:
   m_ObjectHideFlags: 0

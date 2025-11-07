@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BezierBulletMovement : BulletMovementComponent
+public class BezierMovement : BulletMovementComponent
 {
     [Header("베지어 곡선 설정")]
     [SerializeField] private float _bezierControlX1 = 8f;
