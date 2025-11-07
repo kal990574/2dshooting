@@ -3,7 +3,7 @@ using Utils;
 
 namespace _02.Scripts.Item
 {
-    public class ItemMovement : MonoBehaviour
+    public class MovementComponent : MonoBehaviour
     {
         [Header("이동 설정")]
         [SerializeField] private float _waitTime = 2f;

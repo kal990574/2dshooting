@@ -49,7 +49,6 @@ namespace _02.Scripts.Item
             {
                 return _speedItemPrefab;
             }
-
             
             return _attackSpeedItemPrefab;
         }
