@@ -256,10 +256,9 @@ MonoBehaviour:
   _xMax: 4
   _yMin: -9
   _yMax: 9
-  _baseSpeed: 4
+  _currentSpeed: 4
   _speedStep: 1
   _speedMul: 1.5
-  _currentSpeed: 0
 --- !u!50 &7336137348490296786
 Rigidbody2D:
   serializedVersion: 5
@@ -345,4 +344,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2bad88bc7078e4980ab3b0a99d6b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 3

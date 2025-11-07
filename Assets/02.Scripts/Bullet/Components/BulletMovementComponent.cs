@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BulletMovementComponent : MonoBehaviour
 {
-    protected BulletSpeedComponent _speedComponent;
+    private BulletSpeedComponent _speedComponent;
 
     protected virtual void Start()
     {

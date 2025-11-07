@@ -9,27 +9,27 @@ public class PlayerMovementComponent : MonoBehaviour
     [SerializeField] private float _yMax = 9f;
 
     [Header("속도 설정")]
-    [SerializeField] private float _baseSpeed = 4f;
+    [SerializeField] private float _currentSpeed = 4f;
     [SerializeField] private float _speedStep = 1f;
     [SerializeField] private float _speedMul = 1.5f;
-
-    [Header("실행 정보")]
-    [SerializeField] private float _currentSpeed = 0f;
 
     private Vector3 _originPosition;
 
     void Start()
     {
-        _currentSpeed = _baseSpeed;
         _originPosition = transform.position;
     }
 
     void Update()
     {
         HandleSpeedInput();
-        UpdateCurrentSpeed();
         HandleMovement();
         ApplyBoundary();
+    }
+
+    public void SpeedUp(float value)
+    {
+        _currentSpeed += value;
     }
 
     private void HandleSpeedInput()
@@ -37,27 +37,25 @@ public class PlayerMovementComponent : MonoBehaviour
         // 속도 증가
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            _baseSpeed += _speedStep;
+            _currentSpeed += _speedStep;
         }
 
         // 속도 감소
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _baseSpeed = Mathf.Max(0f, _baseSpeed - _speedStep);
+            _currentSpeed = Mathf.Max(0f, _currentSpeed - _speedStep);
         }
-    }
-
-    private void UpdateCurrentSpeed()
-    {
-        // Shift: 고속 이동
-        bool isShiftPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        _currentSpeed = isShiftPressed ? _baseSpeed * _speedMul : _baseSpeed;
     }
 
     private void HandleMovement()
     {
         Vector3 moveDirection = GetMoveDirection();
-        transform.Translate(moveDirection * (_currentSpeed * Time.deltaTime));
+
+        // 고속 이동
+        bool isShiftPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        float moveSpeed = isShiftPressed ? _currentSpeed * _speedMul : _currentSpeed;
+
+        transform.Translate(moveDirection * (moveSpeed * Time.deltaTime));
     }
 
     private Vector3 GetMoveDirection()
@@ -77,7 +75,7 @@ public class PlayerMovementComponent : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        // 화면 경계를 넘으면 반대편으로 나옴
+        // 경계
         pos.x = WrapCoordinate(pos.x, _xMin, _xMax);
         pos.y = WrapCoordinate(pos.y, _yMin, _yMax);
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DownwardBulletMovement : MonoBehaviour
+public class EnemyBulletMovement : MonoBehaviour
 {
     [Header("속도 설정")]
     [SerializeField] private float _speed = 5f;
