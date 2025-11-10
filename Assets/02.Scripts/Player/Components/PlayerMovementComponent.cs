@@ -25,10 +25,10 @@ public class PlayerMovementComponent : MonoBehaviour
     [SerializeField] private MovementMode _currentMovementMode = MovementMode.Manual;
 
     [Header("자동 이동 설정")]
-    [SerializeField] private float _detectionRadius = 5f; // 위협 탐지 반경
-    [SerializeField] private float _enemyThreatWeight = 1f; // 적 위협도
-    [SerializeField] private float _bulletThreatWeight = 5f; // 총알 위협도 (더 위험)
-    [SerializeField] private int _directionSamples = 12; // 방향 샘플링 수 (많을수록 정밀)
+    [SerializeField] private float _detectionRadius = 5f;
+    [SerializeField] private float _enemyThreatWeight = 1f;
+    [SerializeField] private float _bulletThreatWeight = 5f;
+    [SerializeField] private int _directionSamples = 12;
 
     private Vector3 _originPosition;
 
@@ -199,10 +199,6 @@ public class PlayerMovementComponent : MonoBehaviour
             }
         }
 
-        // 경계 근처 방지
-        float edgePenalty = CalculateEdgePenalty(testPosition);
-        safetyScore -= edgePenalty;
-
         // 중앙 선호
         float centerBonus = CalculateCenterBonus(testPosition);
         safetyScore += centerBonus;
@@ -210,24 +206,9 @@ public class PlayerMovementComponent : MonoBehaviour
         return safetyScore;
     }
 
-    private float CalculateEdgePenalty(Vector3 position)
-    {
-        float distanceToEdgeX = Mathf.Min(position.x - _xMin, _xMax - position.x);
-        float distanceToEdgeY = Mathf.Min(position.y - _yMin, _yMax - position.y);
-        float minDistanceToEdge = Mathf.Min(distanceToEdgeX, distanceToEdgeY);
-
-        float edgeThreshold = 1.5f;
-        if (minDistanceToEdge < edgeThreshold)
-        {
-            return (edgeThreshold - minDistanceToEdge) * 2f;
-        }
-
-        return 0f;
-    }
-
     private float CalculateCenterBonus(Vector3 position)
     {
-        Vector3 center = new Vector3(0f, -7f, 0f);
+        Vector3 center = _originPosition;
         
         float distanceFromCenter = Vector3.Distance(position, center);
         float maxDistance = Vector3.Distance(center, new Vector3(_xMax, _yMax, 0f));
