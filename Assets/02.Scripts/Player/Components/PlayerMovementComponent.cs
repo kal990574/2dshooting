@@ -4,11 +4,12 @@ public class PlayerMovementComponent : MonoBehaviour
 {
     public enum MovementMode
     {
-        // 수동 이동
         Manual = 1,
-        // 자동 이동 (회피)
         Auto = 2
     }
+
+    private const float BASE_SAFETY_SCORE = 100f;
+    private const float FULL_CIRCLE_DEGREES = 360f;
 
     [Header("이동 범위")]
     [SerializeField] private float _xMin = -4f;
@@ -47,13 +48,11 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private void HandleMovementModeInput()
     {
-        // 수동 이동 모드
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             _currentMovementMode = MovementMode.Manual;
         }
 
-        // 자동 이동 모드
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             _currentMovementMode = MovementMode.Auto;
@@ -67,13 +66,11 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private void HandleSpeedInput()
     {
-        // 속도 증가
         if (Input.GetKeyDown(KeyCode.Q))
         {
             _currentSpeed += _speedStep;
         }
 
-        // 속도 감소
         if (Input.GetKeyDown(KeyCode.E))
         {
             _currentSpeed = Mathf.Max(0f, _currentSpeed - _speedStep);
@@ -83,8 +80,6 @@ public class PlayerMovementComponent : MonoBehaviour
     private void HandleMovement()
     {
         Vector3 moveDirection = GetMoveDirection();
-
-        // 고속 이동
         bool isShiftPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         float moveSpeed = isShiftPressed ? _currentSpeed * _speedMul : _currentSpeed;
 
@@ -93,20 +88,13 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private Vector3 GetMoveDirection()
     {
-        switch (_currentMovementMode)
-        {
-            case MovementMode.Auto:
-                return GetAutoMoveDirection();
-
-            case MovementMode.Manual:
-            default:
-                return GetManualMoveDirection();
-        }
+        return _currentMovementMode == MovementMode.Auto
+            ? GetAutoMoveDirection()
+            : GetManualMoveDirection();
     }
 
     private Vector3 GetManualMoveDirection()
     {
-        // 원점으로 이동
         if (Input.GetKey(KeyCode.R))
         {
             return (_originPosition - transform.position).normalized;
@@ -132,15 +120,14 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private Vector3 FindSafestDirection(GameObject[] enemies, EnemyBullet[] bullets)
     {
-        float bestScore = float.MinValue;
+        float bestScore = 0f;
         Vector3 bestDirection = Vector3.zero;
 
         for (int i = 0; i < _directionSamples; i++)
         {
-            float angle = (360f / _directionSamples) * i;
+            float angle = (FULL_CIRCLE_DEGREES / _directionSamples) * i;
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
 
-            // 방향 별 안전도 탐색
             float score = EvaluateDirectionSafety(direction, enemies, bullets);
 
             if (score > bestScore)
@@ -150,53 +137,70 @@ public class PlayerMovementComponent : MonoBehaviour
             }
         }
 
-        return bestDirection.normalized;
+        return bestDirection;
     }
 
     private float EvaluateDirectionSafety(Vector3 direction, GameObject[] enemies, EnemyBullet[] bullets)
     {
-        Vector3 testPosition = transform.position + direction * _currentSpeed * Time.deltaTime;
+        Vector3 testPosition = CalculateTestPosition(direction);
 
-        float safetyScore = 100f;
-        
+        float safetyScore = BASE_SAFETY_SCORE;
+
+        safetyScore -= CalculateEnemyThreat(testPosition, enemies);
+        safetyScore -= CalculateBulletThreat(testPosition, bullets);
+        safetyScore += CalculateCenterBonus(testPosition);
+
+        return safetyScore;
+    }
+
+    private Vector3 CalculateTestPosition(Vector3 direction)
+    {
+        return transform.position + direction * _currentSpeed * Time.deltaTime;
+    }
+
+    private float CalculateEnemyThreat(Vector3 position, GameObject[] enemies)
+    {
+        float totalThreat = 0f;
+
         foreach (GameObject enemy in enemies)
         {
             if (enemy == null) continue;
 
-            float distance = Vector3.Distance(testPosition, enemy.transform.position);
-            
-            if (distance < _detectionRadius)
-            {
-                float normalizedDistance = distance / _detectionRadius;
-                
-                float inverseDist = 1f - normalizedDistance;
-                float threat = inverseDist * _enemyThreatWeight;
-
-                safetyScore -= threat;
-            }
+            float threat = CalculateThreat(position, enemy.transform.position, _enemyThreatWeight);
+            totalThreat += threat;
         }
+
+        return totalThreat;
+    }
+
+    private float CalculateBulletThreat(Vector3 position, EnemyBullet[] bullets)
+    {
+        float totalThreat = 0f;
 
         foreach (EnemyBullet bullet in bullets)
         {
             if (bullet == null) continue;
 
-            float distance = Vector3.Distance(testPosition, bullet.transform.position);
-
-            if (distance < _detectionRadius)
-            {
-                float normalizedDistance = distance / _detectionRadius;
-
-                float inverseDist = 1f - normalizedDistance;
-                float threat = inverseDist * _bulletThreatWeight;
-
-                safetyScore -= threat;
-            }
+            float threat = CalculateThreat(position, bullet.transform.position, _bulletThreatWeight);
+            totalThreat += threat;
         }
 
-        float centerBonus = CalculateCenterBonus(testPosition);
-        safetyScore += centerBonus;
+        return totalThreat;
+    }
 
-        return safetyScore;
+    private float CalculateThreat(Vector3 fromPosition, Vector3 targetPosition, float threatWeight)
+    {
+        float distance = Vector3.Distance(fromPosition, targetPosition);
+
+        if (distance >= _detectionRadius)
+        {
+            return 0f;
+        }
+
+        float normalizedDistance = distance / _detectionRadius;
+        float inverseDist = 1f - normalizedDistance;
+
+        return inverseDist * threatWeight;
     }
 
     private float CalculateCenterBonus(Vector3 position)
@@ -213,7 +217,6 @@ public class PlayerMovementComponent : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        // 경계
         pos.x = WrapCoordinate(pos.x, _xMin, _xMax);
         pos.y = WrapCoordinate(pos.y, _yMin, _yMax);
 

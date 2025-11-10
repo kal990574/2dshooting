@@ -1163,7 +1163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8067787774944297535, guid: 125e6d20daaae474c9a80ab51206903e, type: 3}
       propertyPath: _detectionRadius
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8067787774944297535, guid: 125e6d20daaae474c9a80ab51206903e, type: 3}
       propertyPath: _directionSamples
