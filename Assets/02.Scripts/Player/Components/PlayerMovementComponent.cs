@@ -157,12 +157,6 @@ public class PlayerMovementComponent : MonoBehaviour
     {
         Vector3 testPosition = transform.position + direction * _currentSpeed * Time.deltaTime;
 
-        if (testPosition.x < _xMin || testPosition.x > _xMax ||
-            testPosition.y < _yMin || testPosition.y > _yMax)
-        {
-            return float.MinValue;
-        }
-
         float safetyScore = 100f;
         
         foreach (GameObject enemy in enemies)
@@ -199,7 +193,6 @@ public class PlayerMovementComponent : MonoBehaviour
             }
         }
 
-        // 중앙 선호
         float centerBonus = CalculateCenterBonus(testPosition);
         safetyScore += centerBonus;
 
@@ -229,8 +222,8 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private float WrapCoordinate(float value, float min, float max)
     {
-        if (value > max) return min;
-        if (value < min) return max;
+        if (value > max) return max;
+        if (value < min) return min;
         return value;
     }
 }
