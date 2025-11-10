@@ -5,22 +5,24 @@ using UnityEngine;
 public class PlayerMovementComponent : MonoBehaviour
 {
     [Header("이동 범위")]
-    [SerializeField] private float _xMin = -4f;
-    [SerializeField] private float _xMax = 4f;
-    [SerializeField] private float _yMin = -9f;
-    [SerializeField] private float _yMax = 9f;
+    private float _xMin = -4f;
+    private float _xMax = 4f;
+    private float _yMin = -9f;
+    private float _yMax = 9f;
 
     [Header("속도 설정")]
-    [SerializeField] private float _currentSpeed = 4f;
-    [SerializeField] private float _speedMul = 1.5f;
+    private float _currentSpeed = 4f;
+    private float _speedMul = 1.5f;
 
     private PlayerInputHandler _inputHandler;
     private AutoMovement _autoMovement;
+    private Animator _animator;
 
     void Awake()
     {
         _inputHandler = GetComponent<PlayerInputHandler>();
         _autoMovement = GetComponent<AutoMovement>();
+        _animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -46,6 +48,7 @@ public class PlayerMovementComponent : MonoBehaviour
         float moveSpeed = CalculateMoveSpeed();
 
         transform.Translate(moveDirection * (moveSpeed * Time.deltaTime));
+        UpdateAnimation(moveDirection);
     }
 
     private Vector3 GetMoveDirection()
@@ -73,8 +76,16 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private float WrapCoordinate(float value, float min, float max)
     {
-        if (value > max) return max;
-        if (value < min) return min;
+        if (value > max) return min;
+        if (value < min) return max;
         return value;
+    }
+
+    private void UpdateAnimation(Vector3 moveDirection)
+    {
+        //if (moveDirection.x < 0) _animator.Play("Left");
+        //if (moveDirection.x == 0) _animator.Play("Idle");
+        //if (moveDirection.x > 0) _animator.Play("Right");
+        _animator.SetInteger("x", (int)moveDirection.x);
     }
 }

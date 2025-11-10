@@ -18,6 +18,8 @@ public class PlayerInputHandler : MonoBehaviour
     public MovementMode CurrentMode => _currentMovementMode;
     public float CurrentSpeed => _currentSpeed;
     public bool IsSpeedBoostActive => Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+    
+    private Animator _animator;
 
     void Start()
     {
