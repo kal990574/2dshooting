@@ -7,11 +7,14 @@ public class Enemy : MonoBehaviour
 
     private HealthComponent _healthComponent;
     private ItemDropper _itemDropper;
+    
+    private Animator _animator;
 
     void Awake()
     {
         _healthComponent = GetComponent<HealthComponent>();
         _itemDropper = GetComponent<ItemDropper>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,6 +35,7 @@ public class Enemy : MonoBehaviour
         if (_healthComponent != null)
         {
             _healthComponent.TakeDamage(damage);
+            _animator.SetTrigger("Hit");
 
             if (_healthComponent.IsDead)
             {
