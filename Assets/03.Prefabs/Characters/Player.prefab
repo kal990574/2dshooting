@@ -136,9 +136,12 @@ GameObject:
   - component: {fileID: 7326680106953955194}
   - component: {fileID: 25233046245973555}
   - component: {fileID: 8067787774944297535}
+  - component: {fileID: 1234241885549661655}
   - component: {fileID: 7336137348490296786}
   - component: {fileID: 1872213688801455279}
   - component: {fileID: 1440772096647312937}
+  - component: {fileID: 685282838385877068}
+  - component: {fileID: 4764817275515137963}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -259,8 +262,21 @@ MonoBehaviour:
   _yMin: -9
   _yMax: 9
   _currentSpeed: 4
-  _speedStep: 1
   _speedMul: 1.5
+--- !u!114 &1234241885549661655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb64acb4c84246479ac54030871b516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 3
+  _knockbackForce: 0
 --- !u!50 &7336137348490296786
 Rigidbody2D:
   serializedVersion: 5
@@ -346,3 +362,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2bad88bc7078e4980ab3b0a99d6b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &685282838385877068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6a6fc58468339419f9a16b021b84cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedStep: 1
+--- !u!114 &4764817275515137963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1099aed6debc524ba07c58516702444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _detectionRadius: 5
+  _directionSamples: 12
+  _enemyThreatWeight: 1
+  _bulletThreatWeight: 5
+  _xMin: -4
+  _xMax: 4
+  _yMin: -9
+  _yMax: 9
