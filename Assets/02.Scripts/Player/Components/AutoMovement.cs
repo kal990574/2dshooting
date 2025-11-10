@@ -6,16 +6,16 @@ public class AutoMovement : MonoBehaviour
     private const float FULL_CIRCLE_DEGREES = 360f;
 
     [Header("탐지 설정")]
-    [SerializeField] private float _detectionRadius = 5f;
-    [SerializeField] private int _directionSamples = 12;
+    private float _detectionRadius = 2f;
+    private int _directionSamples = 8;
 
     [Header("위협 가중치")]
-    [SerializeField] private float _enemyThreatWeight = 1f;
-    [SerializeField] private float _bulletThreatWeight = 5f;
+    private float _enemyThreatWeight = 5f;
+    private float _bulletThreatWeight = 5f;
 
     [Header("경계 설정")]
-    [SerializeField] private float _xMax = 4f;
-    [SerializeField] private float _yMax = 9f;
+    private float _xMax = 4f;
+    private float _yMax = 9f;
 
     private Vector3 _originPosition;
 
