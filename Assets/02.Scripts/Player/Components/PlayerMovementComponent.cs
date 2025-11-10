@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class PlayerMovementComponent : MonoBehaviour
 {
+    public enum MovementMode
+    {
+        // 수동 이동
+        Manual = 1,
+        // 자동 이동 (회피)
+        Auto = 2
+    }
+
     [Header("이동 범위")]
     [SerializeField] private float _xMin = -4f;
     [SerializeField] private float _xMax = 4f;
@@ -13,6 +21,15 @@ public class PlayerMovementComponent : MonoBehaviour
     [SerializeField] private float _speedStep = 1f;
     [SerializeField] private float _speedMul = 1.5f;
 
+    [Header("이동 모드")]
+    [SerializeField] private MovementMode _currentMovementMode = MovementMode.Manual;
+
+    [Header("자동 이동 설정")]
+    [SerializeField] private float _detectionRadius = 5f; // 위협 탐지 반경
+    [SerializeField] private float _enemyThreatWeight = 1f; // 적 위협도
+    [SerializeField] private float _bulletThreatWeight = 5f; // 총알 위협도 (더 위험)
+    [SerializeField] private int _directionSamples = 12; // 방향 샘플링 수 (많을수록 정밀)
+
     private Vector3 _originPosition;
 
     void Start()
@@ -22,9 +39,25 @@ public class PlayerMovementComponent : MonoBehaviour
 
     void Update()
     {
+        HandleMovementModeInput();
         HandleSpeedInput();
         HandleMovement();
         ApplyBoundary();
+    }
+
+    private void HandleMovementModeInput()
+    {
+        // 수동 이동 모드
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _currentMovementMode = MovementMode.Manual;
+        }
+
+        // 자동 이동 모드
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            _currentMovementMode = MovementMode.Auto;
+        }
     }
 
     public void SpeedUp(float value)
@@ -60,6 +93,19 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private Vector3 GetMoveDirection()
     {
+        switch (_currentMovementMode)
+        {
+            case MovementMode.Auto:
+                return GetAutoMoveDirection();
+
+            case MovementMode.Manual:
+            default:
+                return GetManualMoveDirection();
+        }
+    }
+
+    private Vector3 GetManualMoveDirection()
+    {
         // 원점으로 이동
         if (Input.GetKey(KeyCode.R))
         {
@@ -69,6 +115,124 @@ public class PlayerMovementComponent : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         return new Vector2(h, v).normalized;
+    }
+
+    private Vector3 GetAutoMoveDirection()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        EnemyBullet[] bullets = FindObjectsByType<EnemyBullet>(FindObjectsSortMode.None);
+
+        if (enemies.Length == 0 && bullets.Length == 0)
+        {
+            return Vector3.zero;
+        }
+
+        return FindSafestDirection(enemies, bullets);
+    }
+
+    private Vector3 FindSafestDirection(GameObject[] enemies, EnemyBullet[] bullets)
+    {
+        float bestScore = float.MinValue;
+        Vector3 bestDirection = Vector3.zero;
+
+        for (int i = 0; i < _directionSamples; i++)
+        {
+            float angle = (360f / _directionSamples) * i;
+            Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
+
+            // 방향 별 안전도 탐색
+            float score = EvaluateDirectionSafety(direction, enemies, bullets);
+
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestDirection = direction;
+            }
+        }
+
+        return bestDirection.normalized;
+    }
+
+    private float EvaluateDirectionSafety(Vector3 direction, GameObject[] enemies, EnemyBullet[] bullets)
+    {
+        Vector3 testPosition = transform.position + direction * _currentSpeed * Time.deltaTime;
+
+        if (testPosition.x < _xMin || testPosition.x > _xMax ||
+            testPosition.y < _yMin || testPosition.y > _yMax)
+        {
+            return float.MinValue;
+        }
+
+        float safetyScore = 100f;
+        
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy == null) continue;
+
+            float distance = Vector3.Distance(testPosition, enemy.transform.position);
+            
+            if (distance < _detectionRadius)
+            {
+                float normalizedDistance = distance / _detectionRadius;
+                
+                float inverseDist = 1f - normalizedDistance;
+                float threat = inverseDist * _enemyThreatWeight;
+
+                safetyScore -= threat;
+            }
+        }
+
+        foreach (EnemyBullet bullet in bullets)
+        {
+            if (bullet == null) continue;
+
+            float distance = Vector3.Distance(testPosition, bullet.transform.position);
+
+            if (distance < _detectionRadius)
+            {
+                float normalizedDistance = distance / _detectionRadius;
+
+                float inverseDist = 1f - normalizedDistance;
+                float threat = inverseDist * _bulletThreatWeight;
+
+                safetyScore -= threat;
+            }
+        }
+
+        // 경계 근처 방지
+        float edgePenalty = CalculateEdgePenalty(testPosition);
+        safetyScore -= edgePenalty;
+
+        // 중앙 선호
+        float centerBonus = CalculateCenterBonus(testPosition);
+        safetyScore += centerBonus;
+
+        return safetyScore;
+    }
+
+    private float CalculateEdgePenalty(Vector3 position)
+    {
+        float distanceToEdgeX = Mathf.Min(position.x - _xMin, _xMax - position.x);
+        float distanceToEdgeY = Mathf.Min(position.y - _yMin, _yMax - position.y);
+        float minDistanceToEdge = Mathf.Min(distanceToEdgeX, distanceToEdgeY);
+
+        float edgeThreshold = 1.5f;
+        if (minDistanceToEdge < edgeThreshold)
+        {
+            return (edgeThreshold - minDistanceToEdge) * 2f;
+        }
+
+        return 0f;
+    }
+
+    private float CalculateCenterBonus(Vector3 position)
+    {
+        Vector3 center = new Vector3(0f, -7f, 0f);
+        
+        float distanceFromCenter = Vector3.Distance(position, center);
+        float maxDistance = Vector3.Distance(center, new Vector3(_xMax, _yMax, 0f));
+        
+        return (1f - (distanceFromCenter / maxDistance));
     }
 
     private void ApplyBoundary()
@@ -84,8 +248,8 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private float WrapCoordinate(float value, float min, float max)
     {
-        if (value > max) return max;
-        if (value < min) return min;
+        if (value > max) return min;
+        if (value < min) return max;
         return value;
     }
 }
