@@ -10,10 +10,12 @@ public class AutoMovement : MonoBehaviour
     private int _directionSamples = 12;
 
     [Header("위협 가중치")]
-    private float _enemyThreatWeight = 5f;
-    private float _bulletThreatWeight = 5f;
+    private float _enemyThreatWeight = 10f;
+    private float _bulletThreatWeight = 10f;
 
     [Header("경계 설정")]
+    private float _xMin = -4f;
+    private float _yMin = -9f;
     private float _xMax = 4f;
     private float _yMax = 9f;
 
@@ -62,6 +64,11 @@ public class AutoMovement : MonoBehaviour
     private float EvaluateDirectionSafety(Vector3 direction, GameObject[] enemies, EnemyBullet[] bullets, float speed)
     {
         Vector3 testPosition = CalculateTestPosition(direction, speed);
+        if (testPosition.x < _xMin || testPosition.x > _xMax ||
+            testPosition.y < _yMin || testPosition.y > _yMax)
+        {
+            return float.MinValue;
+        }
 
         float safetyScore = BASE_SAFETY_SCORE;
 
