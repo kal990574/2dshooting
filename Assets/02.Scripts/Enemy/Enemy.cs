@@ -7,8 +7,10 @@ public class Enemy : MonoBehaviour
 
     private HealthComponent _healthComponent;
     private ItemDropper _itemDropper;
-    
     private Animator _animator;
+    
+    [Header("폭발 프리팹")]
+    public GameObject ExplosionPrefab;
 
     void Awake()
     {
@@ -58,7 +60,12 @@ public class Enemy : MonoBehaviour
         {
             _itemDropper.TryDropItem();
         }
-
+        MakeExplosionEffect();
         Destroy(gameObject);
+    }
+
+    private void MakeExplosionEffect()
+    {
+        Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
     }
 }
