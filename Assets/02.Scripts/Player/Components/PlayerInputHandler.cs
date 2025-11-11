@@ -14,12 +14,18 @@ public class PlayerInputHandler : MonoBehaviour
     private MovementMode _currentMovementMode = MovementMode.Manual;
     private float _currentSpeed = 4f;
     private Vector3 _originPosition;
+    private BoomUltimate _boomUltimate;
 
     public MovementMode CurrentMode => _currentMovementMode;
     public float CurrentSpeed => _currentSpeed;
     public bool IsSpeedBoostActive => Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-    
+
     private Animator _animator;
+
+    void Awake()
+    {
+        _boomUltimate = GetComponent<BoomUltimate>();
+    }
 
     void Start()
     {
@@ -30,6 +36,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         HandleMovementModeInput();
         HandleSpeedInput();
+        HandleBoomInput();
     }
 
     public void SetSpeed(float speed)
@@ -77,6 +84,17 @@ public class PlayerInputHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             _currentSpeed = Mathf.Max(0f, _currentSpeed - _speedStep);
+        }
+    }
+
+    private void HandleBoomInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if (_boomUltimate != null)
+            {
+                _boomUltimate.ActivateBoom();
+            }
         }
     }
 }
