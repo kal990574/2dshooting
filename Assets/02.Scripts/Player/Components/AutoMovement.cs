@@ -7,7 +7,7 @@ public class AutoMovement : MonoBehaviour
 
     [Header("탐지 설정")]
     private float _detectionRadius = 2f;
-    private int _directionSamples = 8;
+    private int _directionSamples = 12;
 
     [Header("위협 가중치")]
     private float _enemyThreatWeight = 5f;

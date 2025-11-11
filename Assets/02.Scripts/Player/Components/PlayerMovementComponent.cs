@@ -76,8 +76,8 @@ public class PlayerMovementComponent : MonoBehaviour
 
     private float WrapCoordinate(float value, float min, float max)
     {
-        if (value > max) return min;
-        if (value < min) return max;
+        if (value > max) return max;
+        if (value < min) return min;
         return value;
     }
 
