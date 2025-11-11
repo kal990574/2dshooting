@@ -2,6 +2,7 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     private int speed = 3;
+    private float fspeed = 2;
     void Update()
     {
         transform.position += movePosition();
