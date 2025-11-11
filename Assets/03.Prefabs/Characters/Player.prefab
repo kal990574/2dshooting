@@ -142,6 +142,8 @@ GameObject:
   - component: {fileID: 685282838385877068}
   - component: {fileID: 4764817275515137963}
   - component: {fileID: 3426691751868541984}
+  - component: {fileID: 1280919607555056009}
+  - component: {fileID: 3845903200218746713}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -257,12 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8753007bc0c2e3b4cad398a7053d6aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xMin: -4
-  _xMax: 4
-  _yMin: -9
-  _yMax: 9
-  _currentSpeed: 4
-  _speedMul: 1.5
 --- !u!114 &1234241885549661655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,3 +383,43 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1280919607555056009
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 324a927d7702e604db089aa522ad4ed8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3845903200218746713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429955397485166373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52366bbe74501394c940cc5edcb8c19c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boomSprite: {fileID: 5399574286488497991, guid: 5654835f3cd987847b6ac8171c14d672, type: 3}
+  _boomMoveSpeed: 10
+  _boomScale: 2
+  _particleEffectPrefab: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+  _particleDuration: 3
+  _particleRadius: 5

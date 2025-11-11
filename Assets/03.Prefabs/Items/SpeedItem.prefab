@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1d5f76551351f46bf7b7e2121e4db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParticleEffectPrefab: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
   _speedIncrease: 1
 --- !u!114 &1484638376544764968
 MonoBehaviour:
