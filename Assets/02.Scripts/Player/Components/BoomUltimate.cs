@@ -5,7 +5,6 @@ public class BoomUltimate : MonoBehaviour
 {
     [Header("붐 스프라이트 설정")]
     [SerializeField] private GameObject _boomSprite;
-    [SerializeField] private float _boomScale = 2f;
 
     [Header("파티클 설정")]
     [SerializeField] private GameObject _particleEffectPrefab;
@@ -27,7 +26,6 @@ public class BoomUltimate : MonoBehaviour
         Vector3 centerPosition = Vector3.zero;
 
         GameObject boomObject = Instantiate(_boomSprite, centerPosition, Quaternion.identity);
-        boomObject.transform.localScale = Vector3.one * _boomScale;
 
         GameObject particle = null;
         if (_particleEffectPrefab != null)

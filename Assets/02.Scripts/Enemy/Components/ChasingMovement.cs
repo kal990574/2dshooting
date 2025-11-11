@@ -18,6 +18,9 @@ public class ChasingMovement : MovementComponent
         if (_playerTransform == null) return;
 
         Vector3 direction = (_playerTransform.position - transform.position).normalized;
-        transform.Translate(direction * (_speed * Time.deltaTime));
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+
+        transform.Translate(direction * (_speed * Time.deltaTime), Space.World);
     }
 }
