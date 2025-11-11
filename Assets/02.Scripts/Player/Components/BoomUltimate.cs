@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BoomUltimate : MonoBehaviour
+public class BoomUltimate : MonoBehaviour, IUltimateAbility
 {
     [Header("붐 스프라이트 설정")]
     [SerializeField] private GameObject _boomSprite;

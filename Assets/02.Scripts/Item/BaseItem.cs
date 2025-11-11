@@ -29,6 +29,7 @@ namespace _02.Scripts.Item
             if (ParticleEffectPrefab != null)
             {
                 GameObject particle = Instantiate(ParticleEffectPrefab, player.transform.position, Quaternion.identity);
+                Destroy(particle, 3f);
             }
         }
     }

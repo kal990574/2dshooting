@@ -14,7 +14,7 @@ public class PlayerInputHandler : MonoBehaviour
     private MovementMode _currentMovementMode = MovementMode.Manual;
     private float _currentSpeed = 4f;
     private Vector3 _originPosition;
-    private BoomUltimate _boomUltimate;
+    private IUltimateAbility _ultimateAbility;
 
     public MovementMode CurrentMode => _currentMovementMode;
     public float CurrentSpeed => _currentSpeed;
@@ -24,7 +24,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Awake()
     {
-        _boomUltimate = GetComponent<BoomUltimate>();
+        _ultimateAbility = GetComponent<IUltimateAbility>();
     }
 
     void Start()
@@ -91,9 +91,9 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (_boomUltimate != null)
+            if (_ultimateAbility != null)
             {
-                _boomUltimate.ActivateBoom();
+                _ultimateAbility?.ActivateBoom();
             }
         }
     }
