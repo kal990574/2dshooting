@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66d84d8fc679bd42b7981251acbdd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParticleEffectPrefab: {fileID: 5318118474938795680, guid: 69d8f05fda8421849a84b27b8c0d773d, type: 3}
   _attackSpeedIncrease: 0.05
 --- !u!114 &4425942962336370283
 MonoBehaviour:
