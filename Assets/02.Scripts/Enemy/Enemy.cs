@@ -61,6 +61,9 @@ public class Enemy : MonoBehaviour
             _itemDropper.TryDropItem();
         }
         MakeExplosionEffect();
+
+        ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+        scoreManager.AddScore(100);
         Destroy(gameObject);
     }
 
