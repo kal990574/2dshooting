@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class ScoreManager : MonoBehaviour
     {
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
         _highScoreTextUI.text = $"최고 점수 : {_highScore}";
+        
+        _currentScoreTextUI.transform.DOScale(1.2f, 0.15f)
+            .SetEase(Ease.OutBack)
+            .OnComplete(() => _currentScoreTextUI.transform.DOScale(1.0f, 0.15f));
     }
 
     private void LoadHighScore()
