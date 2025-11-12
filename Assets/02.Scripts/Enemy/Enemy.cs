@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [Header("폭발 프리팹")]
     public ParticleSystem ExplosionPrefab;
 
-    private int _score = 3000;
+    private int _score = 100000;
 
     void Awake()
     {
