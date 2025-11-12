@@ -219,7 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11b527677a245b4397969049aa3d3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundMaterial: {fileID: 2100000, guid: 053657e3b334fa2439d4b255a6806f73, type: 2}
   ScrollSpeed: 0.1
 --- !u!1 &120036328
 GameObject:
@@ -531,7 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11b527677a245b4397969049aa3d3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundMaterial: {fileID: 2100000, guid: ec01156478a17244bb605e5a8afba8bc, type: 2}
   ScrollSpeed: 0.1
 --- !u!1 &421853192
 GameObject:
@@ -808,7 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11b527677a245b4397969049aa3d3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundMaterial: {fileID: 2100000, guid: 851de1c21e0cd6142bf50ab1171e26b9, type: 2}
   ScrollSpeed: 0.1
 --- !u!1 &519420028
 GameObject:
@@ -1425,7 +1422,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD604\uC7AC \uC810\uC218"
+  m_Text: "\uD604\uC7AC \uC810\uC218 : 0"
 --- !u!222 &760916795
 CanvasRenderer:
   m_ObjectHideFlags: 0

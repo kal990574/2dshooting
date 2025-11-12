@@ -13,7 +13,6 @@ public class BackgroundScroll : MonoBehaviour
         _renderer = GetComponent<Renderer>();
         _mpb = new MaterialPropertyBlock();
 
-        // 기존 offset 값 가져오기
         _offset = _renderer.sharedMaterial.mainTextureOffset;
     }
 
@@ -22,7 +21,6 @@ public class BackgroundScroll : MonoBehaviour
         Vector2 direction = Vector2.up;
         _offset += direction * (ScrollSpeed * Time.deltaTime);
 
-        // Vector4(scaleX, scaleY, offsetX, offsetY)
         _mpb.SetVector(MainTexSTProperty, new Vector4(1, 1, _offset.x, _offset.y));
         _renderer.SetPropertyBlock(_mpb);
     }
