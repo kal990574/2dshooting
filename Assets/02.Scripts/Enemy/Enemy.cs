@@ -10,7 +10,9 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
     
     [Header("폭발 프리팹")]
-    public GameObject ExplosionPrefab;
+    public ParticleSystem ExplosionPrefab;
+
+    private int _score = 100;
 
     void Awake()
     {
@@ -63,12 +65,12 @@ public class Enemy : MonoBehaviour
         MakeExplosionEffect();
 
         ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
-        scoreManager.AddScore(100);
+        scoreManager.AddScore(_score);
         Destroy(gameObject);
     }
 
     private void MakeExplosionEffect()
     {
-        Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+        ParticleSystem explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
     }
 }
