@@ -9,11 +9,13 @@ public class ScoreManager : MonoBehaviour
 
     private int _currentScore = 0;
     private int _highScore = 0;
-    private const string HIGH_SCORE_KEY = "HighScore";
+    private const string USER_DATA_KEY = "UserData";
+    private UserData _userData;
 
     private void Start()
     {
-        LoadHighScore();
+        LoadUserData();
+        _highScore = _userData.highScore;
         _highScoreTextUI.text = $"최고 점수 : {_highScore:N0}";
         //PlayerPrefs.DeleteAll();
     }
@@ -22,12 +24,12 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int score)
     {
         if (score <= 0) return;
-        
+
         _currentScore += score;
         if (_currentScore > _highScore)
         {
             _highScore = _currentScore;
-            SaveHighScore();
+            SaveUserData();
         }
 
         RefreshScore();
@@ -49,14 +51,26 @@ public class ScoreManager : MonoBehaviour
             .OnComplete(() => targetText.transform.DOScale(1.0f, 0.1f));
     }
 
-    private void LoadHighScore()
+    private void LoadUserData()
     {
-        _highScore = PlayerPrefs.GetInt(HIGH_SCORE_KEY, 0);
+        string json = PlayerPrefs.GetString(USER_DATA_KEY, string.Empty);
+
+        if (string.IsNullOrEmpty(json))
+        {
+            _userData = new UserData();
+        }
+        else
+        {
+            _userData = UserData.FromJson(json);
+        }
     }
 
-    private void SaveHighScore()
+    private void SaveUserData()
     {
-        PlayerPrefs.SetInt(HIGH_SCORE_KEY, _highScore);
+        _userData.highScore = _highScore;
+        string json = _userData.ToJson();
+
+        PlayerPrefs.SetString(USER_DATA_KEY, json);
         PlayerPrefs.Save();
     }
 }
