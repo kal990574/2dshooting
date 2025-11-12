@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
     {
         LoadHighScore();
         _highScoreTextUI.text = $"최고 점수 : {_highScore:N0}";
-        // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
     }
 
     
