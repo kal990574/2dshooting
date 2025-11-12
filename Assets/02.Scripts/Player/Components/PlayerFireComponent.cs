@@ -26,6 +26,8 @@ public class PlayerFireComponent : MonoBehaviour
     [SerializeField] private float _minFireCooldown = 0.1f;
     [SerializeField] private FireMode _currentFireMode = FireMode.Auto;
 
+    public AudioSource FireSound;
+
     private float _lastFireTime = -1f;
 
     private void Update()
@@ -90,6 +92,7 @@ public class PlayerFireComponent : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab);
             bullet.transform.position = firePosition.position;
+            FireSound.Play();
         }
     }
 
