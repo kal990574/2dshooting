@@ -37,10 +37,16 @@ public class ScoreManager : MonoBehaviour
     {
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore}";
         _highScoreTextUI.text = $"최고 점수 : {_highScore}";
-        
-        _currentScoreTextUI.transform.DOScale(1.1f, 0.1f)
+
+        PlayScaleAnimation(_currentScoreTextUI);
+        PlayScaleAnimation(_highScoreTextUI);
+    }
+
+    private void PlayScaleAnimation(Text targetText)
+    {
+        targetText.transform.DOScale(1.1f, 0.1f)
             .SetEase(Ease.OutBack)
-            .OnComplete(() => _currentScoreTextUI.transform.DOScale(1.0f, 0.1f));
+            .OnComplete(() => targetText.transform.DOScale(1.0f, 0.1f));
     }
 
     private void LoadHighScore()
