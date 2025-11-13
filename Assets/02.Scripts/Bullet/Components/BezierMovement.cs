@@ -16,10 +16,8 @@ public class BezierMovement : BulletMovementComponent
     private Vector3 _bezierEndPoint;
     private float _bezierTime;
 
-    protected override void Start()
+    private void OnEnable()
     {
-        base.Start();
-
         _bezierStartPoint = transform.position;
         _bezierEndPoint = _endPointPosition;
         _bezierTime = 0f;

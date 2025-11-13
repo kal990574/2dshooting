@@ -4,7 +4,7 @@ public abstract class BulletMovementComponent : MonoBehaviour
 {
     private BulletSpeedComponent _speedComponent;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         _speedComponent = GetComponent<BulletSpeedComponent>();
     }
