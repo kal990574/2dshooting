@@ -20,6 +20,6 @@ public class PlayerBullet : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
