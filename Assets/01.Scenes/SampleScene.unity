@@ -508,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 214000611579939268, guid: e69784c61ac788d469f14a2ddbdd6401, type: 3}
     - target: {fileID: 9063630959823313249, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_Name
-      value: Follower
+      value: Pet1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1385,7 +1385,7 @@ PrefabInstance:
       objectReference: {fileID: 214000611579939268, guid: e69784c61ac788d469f14a2ddbdd6401, type: 3}
     - target: {fileID: 9063630959823313249, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_Name
-      value: Follower (2)
+      value: Pet3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1760,7 +1760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 992861691}
   m_Layer: 0
-  m_Name: Followers
+  m_Name: Pets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2037,7 +2037,7 @@ PrefabInstance:
       objectReference: {fileID: 214000611579939268, guid: e69784c61ac788d469f14a2ddbdd6401, type: 3}
     - target: {fileID: 9063630959823313249, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_Name
-      value: Follower (1)
+      value: Pet2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

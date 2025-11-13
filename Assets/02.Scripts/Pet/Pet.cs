@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Follower : MonoBehaviour
+public class Pet : MonoBehaviour
 {
     [Header("Follow Settings")]
     [SerializeField] private Transform _followTarget;
