@@ -9,12 +9,7 @@ public class PlayerFireComponent : MonoBehaviour
         // 수동 공격
         Manual = 2     
     }
-
-    [Header("총알 프리팹")]
-    [SerializeField] private GameObject _mainBulletPrefab;
-    [SerializeField] private GameObject _subBulletPrefabLeft;
-    [SerializeField] private GameObject _subBulletPrefabRight;
-
+    
     [Header("발사 위치")]
     [SerializeField] private Transform _mainFirePositionLeft;
     [SerializeField] private Transform _mainFirePositionRight;
@@ -80,20 +75,19 @@ public class PlayerFireComponent : MonoBehaviour
 
     private void Fire()
     {
-        SpawnBullet(_mainBulletPrefab, _mainFirePositionLeft);
-        SpawnBullet(_mainBulletPrefab, _mainFirePositionRight);
-        SpawnBullet(_subBulletPrefabLeft, _subFirePositionLeft);
-        SpawnBullet(_subBulletPrefabRight, _subFirePositionRight);
-    }
+        if (_mainFirePositionLeft != null)
+            BulletFactory.Instance.MakePlayerMainBullet(_mainFirePositionLeft.position);
 
-    private void SpawnBullet(GameObject bulletPrefab, Transform firePosition)
-    {
-        if (bulletPrefab != null && firePosition != null)
-        {
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = firePosition.position;
-            FireSound.Play();
-        }
+        if (_mainFirePositionRight != null)
+            BulletFactory.Instance.MakePlayerMainBullet(_mainFirePositionRight.position);
+
+        if (_subFirePositionLeft != null)
+            BulletFactory.Instance.MakePlayerSubLeftBullet(_subFirePositionLeft.position);
+
+        if (_subFirePositionRight != null)
+            BulletFactory.Instance.MakePlayerSubRightBullet(_subFirePositionRight.position);
+
+        FireSound.Play();
     }
 
     public void IncreaseAttackSpeed(float amount)

@@ -3,7 +3,6 @@ using UnityEngine;
 public class PetFireComponent : MonoBehaviour
 {
     [Header("Bullet Settings")]
-    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePosition;
 
     [Header("Fire Settings")]
@@ -27,10 +26,9 @@ public class PetFireComponent : MonoBehaviour
 
     private void Fire()
     {
-        if (_bulletPrefab != null && _firePosition != null)
+        if (_firePosition != null)
         {
-            GameObject bullet = Instantiate(_bulletPrefab);
-            bullet.transform.position = _firePosition.position;
+            BulletFactory.Instance.MakePetBullet(_firePosition.position);
         }
     }
 }

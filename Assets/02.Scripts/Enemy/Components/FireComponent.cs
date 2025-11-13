@@ -3,7 +3,6 @@ using UnityEngine;
 public class FireComponent : MonoBehaviour
 {
     [Header("발사 설정")]
-    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePosition;
     [SerializeField] private float _fireInterval = 1.5f;
     [SerializeField] private bool _autoFire = true;
@@ -34,13 +33,10 @@ public class FireComponent : MonoBehaviour
 
     private void Fire()
     {
-        if (_bulletPrefab == null) return;
-
         Vector3 spawnPosition = _firePosition != null
             ? _firePosition.position
             : transform.position;
 
-        GameObject bullet = Instantiate(_bulletPrefab);
-        bullet.transform.position = spawnPosition;
+        BulletFactory.Instance.MakeEnemyBullet(spawnPosition);
     }
 }
