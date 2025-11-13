@@ -75,7 +75,6 @@ public class PlayerFireComponent : MonoBehaviour
 
     private void Fire()
     {
-        // BulletFactory를 사용해서 총알 생성
         if (_mainFirePositionLeft != null)
             BulletFactory.Instance.MakePlayerMainBullet(_mainFirePositionLeft.position);
 

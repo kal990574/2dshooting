@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BulletFactory : MonoBehaviour
 {
@@ -22,11 +23,11 @@ public class BulletFactory : MonoBehaviour
     public int EnemyPoolSize = 50;
     public int PetPoolSize = 20;
 
-    private GameObject[] _playerMainBulletPool;
-    private GameObject[] _playerSubLeftBulletPool;
-    private GameObject[] _playerSubRightBulletPool;
-    private GameObject[] _enemyBulletPool;
-    private GameObject[] _petBulletPool;
+    private List<GameObject> _playerMainBulletPool;
+    private List<GameObject> _playerSubLeftBulletPool;
+    private List<GameObject> _playerSubRightBulletPool;
+    private List<GameObject> _enemyBulletPool;
+    private List<GameObject> _petBulletPool;
 
     private void Awake()
     {
@@ -37,91 +38,70 @@ public class BulletFactory : MonoBehaviour
         }
 
         _instance = this;
-
         PoolInit();
     }
 
     private void PoolInit()
     {
-        _playerMainBulletPool = new GameObject[PlayerMainPoolSize];
-        for (int i = 0; i < PlayerMainPoolSize; i++)
+        _playerMainBulletPool = CreatePool(PlayerBulletMainPrefab, PlayerMainPoolSize);
+        _playerSubLeftBulletPool = CreatePool(PlayerBulletSubLeftPrefab, PlayerSubPoolSize);
+        _playerSubRightBulletPool = CreatePool(PlayerBulletSubRightPrefab, PlayerSubPoolSize);
+        _enemyBulletPool = CreatePool(EnemyBulletPrefab, EnemyPoolSize);
+        _petBulletPool = CreatePool(PetBulletPrefab, PetPoolSize);
+    }
+
+    private List<GameObject> CreatePool(GameObject prefab, int poolSize)
+    {
+        List<GameObject> pool = new List<GameObject>();
+
+        for (int i = 0; i < poolSize; i++)
         {
-            GameObject bulletObject = Instantiate(PlayerBulletMainPrefab, transform);
-            _playerMainBulletPool[i] = bulletObject;
+            GameObject bulletObject = Instantiate(prefab, transform);
             bulletObject.SetActive(false);
+            pool.Add(bulletObject);
         }
 
-        _playerSubLeftBulletPool = new GameObject[PlayerSubPoolSize];
-        for (int i = 0; i < PlayerSubPoolSize; i++)
-        {
-            GameObject bulletObject = Instantiate(PlayerBulletSubLeftPrefab, transform);
-            _playerSubLeftBulletPool[i] = bulletObject;
-            bulletObject.SetActive(false);
-        }
-
-        _playerSubRightBulletPool = new GameObject[PlayerSubPoolSize];
-        for (int i = 0; i < PlayerSubPoolSize; i++)
-        {
-            GameObject bulletObject = Instantiate(PlayerBulletSubRightPrefab, transform);
-            _playerSubRightBulletPool[i] = bulletObject;
-            bulletObject.SetActive(false);
-        }
-
-        _enemyBulletPool = new GameObject[EnemyPoolSize];
-        for (int i = 0; i < EnemyPoolSize; i++)
-        {
-            GameObject bulletObject = Instantiate(EnemyBulletPrefab, transform);
-            _enemyBulletPool[i] = bulletObject;
-            bulletObject.SetActive(false);
-        }
-
-        _petBulletPool = new GameObject[PetPoolSize];
-        for (int i = 0; i < PetPoolSize; i++)
-        {
-            GameObject bulletObject = Instantiate(PetBulletPrefab, transform);
-            _petBulletPool[i] = bulletObject;
-            bulletObject.SetActive(false);
-        }
+        return pool;
     }
 
     public GameObject MakePlayerMainBullet(Vector3 position)
     {
-        return GetBulletFromPool(_playerMainBulletPool, PlayerMainPoolSize, position);
+        return GetBulletFromPool(_playerMainBulletPool, position);
     }
 
     public GameObject MakePlayerSubLeftBullet(Vector3 position)
     {
-        return GetBulletFromPool(_playerSubLeftBulletPool, PlayerSubPoolSize, position);
+        return GetBulletFromPool(_playerSubLeftBulletPool, position);
     }
 
     public GameObject MakePlayerSubRightBullet(Vector3 position)
     {
-        return GetBulletFromPool(_playerSubRightBulletPool, PlayerSubPoolSize, position);
+        return GetBulletFromPool(_playerSubRightBulletPool, position);
     }
 
     public GameObject MakeEnemyBullet(Vector3 position)
     {
-        return GetBulletFromPool(_enemyBulletPool, EnemyPoolSize, position);
+        return GetBulletFromPool(_enemyBulletPool, position);
     }
 
     public GameObject MakePetBullet(Vector3 position)
     {
-        return GetBulletFromPool(_petBulletPool, PetPoolSize, position);
+        return GetBulletFromPool(_petBulletPool, position);
     }
 
-    private GameObject GetBulletFromPool(GameObject[] pool, int poolSize, Vector3 position)
+    private GameObject GetBulletFromPool(List<GameObject> pool, Vector3 position)
     {
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < pool.Count; i++)
         {
-            GameObject bulletObject = pool[i];
-
-            if (bulletObject.activeInHierarchy == false)
+            if (!pool[i].activeInHierarchy)
             {
+                GameObject bulletObject = pool[i];
                 bulletObject.transform.position = position;
                 bulletObject.SetActive(true);
                 return bulletObject;
             }
         }
+
         return null;
     }
 }

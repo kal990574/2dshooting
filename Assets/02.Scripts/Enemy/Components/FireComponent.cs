@@ -37,7 +37,6 @@ public class FireComponent : MonoBehaviour
             ? _firePosition.position
             : transform.position;
 
-        // BulletFactory를 사용해서 총알 생성
         BulletFactory.Instance.MakeEnemyBullet(spawnPosition);
     }
 }

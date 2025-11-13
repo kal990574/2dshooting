@@ -28,7 +28,6 @@ public class PetFireComponent : MonoBehaviour
     {
         if (_firePosition != null)
         {
-            // BulletFactory를 사용해서 총알 생성
             BulletFactory.Instance.MakePetBullet(_firePosition.position);
         }
     }
