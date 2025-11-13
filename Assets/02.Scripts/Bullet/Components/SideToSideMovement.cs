@@ -9,9 +9,8 @@ public class SideToSideMovement : BulletMovementComponent
     private float _startX;
     private float _horizontalDirection = 1f;
 
-    protected override void Start()
+    private void OnEnable()
     {
-        base.Start();
         _startX = transform.position.x;
     }
 
