@@ -495,6 +495,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 814155132}
     - target: {fileID: 7290609962033011166, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
+      propertyPath: _minMoveDistance
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290609962033011166, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: _playerTrailRecorder
       value: 
       objectReference: {fileID: 0}
@@ -1364,6 +1368,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 621492301}
     - target: {fileID: 7290609962033011166, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
+      propertyPath: _minMoveDistance
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290609962033011166, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: _playerTrailRecorder
       value: 
       objectReference: {fileID: 0}
@@ -2007,6 +2015,10 @@ PrefabInstance:
       propertyPath: _followingPrefab
       value: 
       objectReference: {fileID: 1801959497}
+    - target: {fileID: 7290609962033011166, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
+      propertyPath: _minMoveDistance
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 7290609962033011166, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: _playerTrailRecorder
       value: 

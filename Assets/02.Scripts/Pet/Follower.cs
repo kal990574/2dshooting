@@ -6,9 +6,18 @@ public class Follower : MonoBehaviour
     [Header("Follow Settings")]
     [SerializeField] private Transform _followTarget;
     [SerializeField] private int _followOffset = 40;
-    [SerializeField] private float _minDistance = 1f; 
+    [SerializeField] private float _minMoveDistance = 0.02f;
 
     private Queue<Vector3> _myTrail = new Queue<Vector3>();
+    private Vector3 _lastTargetPosition;
+
+    private void Start()
+    {
+        if (_followTarget != null)
+        {
+            _lastTargetPosition = _followTarget.position;
+        }
+    }
 
     private void Update()
     {
@@ -19,11 +28,12 @@ public class Follower : MonoBehaviour
     {
         if (_followTarget == null) return;
 
-        float distanceToTarget = Vector3.Distance(transform.position, _followTarget.position);
+        float targetMovedDistance = Vector3.Distance(_followTarget.position, _lastTargetPosition);
 
-        if (distanceToTarget >= _minDistance)
+        if (targetMovedDistance >= _minMoveDistance)
         {
             _myTrail.Enqueue(_followTarget.position);
+            _lastTargetPosition = _followTarget.position;
         }
 
         if (_myTrail.Count > _followOffset)
@@ -31,4 +41,5 @@ public class Follower : MonoBehaviour
             transform.position = _myTrail.Dequeue();
         }
     }
+
 }
