@@ -440,7 +440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5545711673838718399, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.76
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 5545711673838718399, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -502,6 +502,10 @@ PrefabInstance:
       propertyPath: _playerTrailRecorder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8943313951924140974, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 214000611579939268, guid: e69784c61ac788d469f14a2ddbdd6401, type: 3}
     - target: {fileID: 9063630959823313249, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_Name
       value: Follower
@@ -1313,7 +1317,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5545711673838718399, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.06
+      value: 2.8999999
       objectReference: {fileID: 0}
     - target: {fileID: 5545711673838718399, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1375,6 +1379,10 @@ PrefabInstance:
       propertyPath: _playerTrailRecorder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8943313951924140974, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 214000611579939268, guid: e69784c61ac788d469f14a2ddbdd6401, type: 3}
     - target: {fileID: 9063630959823313249, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_Name
       value: Follower (2)
@@ -1961,7 +1969,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5545711673838718399, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.89
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: 5545711673838718399, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2023,6 +2031,10 @@ PrefabInstance:
       propertyPath: _playerTrailRecorder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8943313951924140974, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 214000611579939268, guid: e69784c61ac788d469f14a2ddbdd6401, type: 3}
     - target: {fileID: 9063630959823313249, guid: 2b9be0a78ca62c149bea36f1178123e1, type: 3}
       propertyPath: m_Name
       value: Follower (1)
