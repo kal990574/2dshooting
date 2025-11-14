@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletSpeedComponent : MonoBehaviour
 {
     [Header("속도 설정")]
-    [SerializeField] private float _startSpeed = 1f;
+    [SerializeField] private float _startSpeed = 3f;
     [SerializeField] private float _endSpeed = 7f;
     [SerializeField] private float _accelerationTime = 1.2f;
 
@@ -11,7 +11,7 @@ public class BulletSpeedComponent : MonoBehaviour
 
     public float CurrentSpeed => _currentSpeed;
 
-    void Start()
+    void OnEnable()
     {
         _currentSpeed = _startSpeed;
     }
