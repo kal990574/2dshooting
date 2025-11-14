@@ -10,12 +10,17 @@ public class EnemyFactory : MonoBehaviour
     public GameObject StraightEnemyPrefab;
     public GameObject ChasingEnemyPrefab;
 
+    [Header("Boss 프리팹")]
+    public GameObject BossPrefab;
+
     [Header("풀링 설정")]
-    public int StraightEnemyPoolSize = 30;
-    public int ChasingEnemyPoolSize = 30;
+    public int StraightEnemyPoolSize = 50;
+    public int ChasingEnemyPoolSize = 50;
+    public int BossPoolSize = 3;
 
     private List<GameObject> _straightEnemyPool;
     private List<GameObject> _chasingEnemyPool;
+    private List<GameObject> _bossPool;
 
     private void Awake()
     {
@@ -30,7 +35,6 @@ public class EnemyFactory : MonoBehaviour
 
     private void PoolInit()
     {
-        // Straight Enemy Pool
         _straightEnemyPool = new List<GameObject>();
         for (int i = 0; i < StraightEnemyPoolSize; i++)
         {
@@ -39,13 +43,20 @@ public class EnemyFactory : MonoBehaviour
             enemyObject.SetActive(false);
         }
 
-        // Chasing Enemy Pool
         _chasingEnemyPool = new List<GameObject>();
         for (int i = 0; i < ChasingEnemyPoolSize; i++)
         {
             GameObject enemyObject = Instantiate(ChasingEnemyPrefab, transform);
             _chasingEnemyPool.Add(enemyObject);
             enemyObject.SetActive(false);
+        }
+
+        _bossPool = new List<GameObject>();
+        for (int i = 0; i < BossPoolSize; i++)
+        {
+            GameObject bossObject = Instantiate(BossPrefab, transform);
+            _bossPool.Add(bossObject);
+            bossObject.SetActive(false);
         }
     }
 
@@ -57,6 +68,11 @@ public class EnemyFactory : MonoBehaviour
     public GameObject MakeChasingEnemy(Vector3 position)
     {
         return GetEnemyFromPool(_chasingEnemyPool, position);
+    }
+
+    public GameObject MakeBoss(Vector3 position)
+    {
+        return GetEnemyFromPool(_bossPool, position);
     }
 
     private GameObject GetEnemyFromPool(List<GameObject> pool, Vector3 position)

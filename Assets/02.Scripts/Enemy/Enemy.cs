@@ -5,35 +5,39 @@ public class Enemy : MonoBehaviour
     [Header("데미지 설정")]
     [SerializeField] private float _damage = 1f;
 
-    private HealthComponent _healthComponent;
+    protected HealthComponent _healthComponent;
     private ItemDropper _itemDropper;
-    private Animator _animator;
+    protected Animator _animator;
     
     [Header("폭발 프리팹")]
     public ParticleSystem ExplosionPrefab;
 
-    private int _score = 100000;
+    protected int _score = 100000;
 
-    void Awake()
+    protected virtual void Awake()
     {
         _healthComponent = GetComponent<HealthComponent>();
         _itemDropper = GetComponent<ItemDropper>();
         _animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        // Health 초기화
         if (_healthComponent != null)
         {
             _healthComponent.ResetHealth();
         }
 
-        // Chasing Enemy의 경우 Player 재탐색
         ChasingMovement chasingMovement = GetComponent<ChasingMovement>();
         if (chasingMovement != null)
         {
             chasingMovement.FindPlayer();
+        }
+
+        Hitbox hitbox = GetComponentInChildren<Hitbox>(true);
+        if (hitbox != null)
+        {
+            hitbox.gameObject.SetActive(true);
         }
     }
 
@@ -72,7 +76,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         if (_itemDropper != null)
         {
@@ -85,7 +89,7 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void MakeExplosionEffect()
+    protected void MakeExplosionEffect()
     {
         ParticleSystem explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
     }

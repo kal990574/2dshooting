@@ -17,17 +17,22 @@ public class BulletFactory : MonoBehaviour
     [Header("Pet 총알 프리팹")]
     public GameObject PetBulletPrefab;
 
+    [Header("Boss 총알 프리팹")]
+    public GameObject BossBulletPrefab;
+
     [Header("풀링 설정")]
     public int PlayerMainPoolSize = 30;
     public int PlayerSubPoolSize = 20;
     public int EnemyPoolSize = 50;
     public int PetPoolSize = 20;
+    public int BossPoolSize = 70; 
 
     private List<GameObject> _playerMainBulletPool;
     private List<GameObject> _playerSubLeftBulletPool;
     private List<GameObject> _playerSubRightBulletPool;
     private List<GameObject> _enemyBulletPool;
     private List<GameObject> _petBulletPool;
+    private List<GameObject> _bossBulletPool;
 
     private void Awake()
     {
@@ -48,6 +53,7 @@ public class BulletFactory : MonoBehaviour
         _playerSubRightBulletPool = CreatePool(PlayerBulletSubRightPrefab, PlayerSubPoolSize);
         _enemyBulletPool = CreatePool(EnemyBulletPrefab, EnemyPoolSize);
         _petBulletPool = CreatePool(PetBulletPrefab, PetPoolSize);
+        _bossBulletPool = CreatePool(BossBulletPrefab, BossPoolSize);
     }
 
     private List<GameObject> CreatePool(GameObject prefab, int poolSize)
@@ -87,6 +93,11 @@ public class BulletFactory : MonoBehaviour
     public GameObject MakePetBullet(Vector3 position)
     {
         return GetBulletFromPool(_petBulletPool, position);
+    }
+
+    public GameObject MakeBossBullet(Vector3 position)
+    {
+        return GetBulletFromPool(_bossBulletPool, position);
     }
 
     private GameObject GetBulletFromPool(List<GameObject> pool, Vector3 position)

@@ -11,7 +11,7 @@ public class Hitbox : MonoBehaviour
 
     private Enemy _parentEnemy;
 
-    void Start()
+    void OnEnable()
     {
         _parentEnemy = GetComponentInParent<Enemy>();
     }
