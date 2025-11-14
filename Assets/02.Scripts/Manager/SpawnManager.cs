@@ -19,15 +19,19 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _bossSpawnYPosition = 10f;
     [SerializeField] private float _bossSpawnXPosition = 0f;
 
+    [Header("보스 스폰 설정")]
+    [SerializeField] private int _bossSpawnInterval = 5000000;
+
     private float _spawnTimer = 0f;
     private ScoreManager _scoreManager;
+    private int _nextBossSpawnScore = 5000000;
 
     void Start()
     {
         _scoreManager = FindAnyObjectByType<ScoreManager>();
         if (_scoreManager != null)
         {
-            _scoreManager.OnBossSpawn += SpawnBoss;
+            _scoreManager.OnScoreChanged += OnScoreChanged;
         }
     }
 
@@ -35,7 +39,16 @@ public class SpawnManager : MonoBehaviour
     {
         if (_scoreManager != null)
         {
-            _scoreManager.OnBossSpawn -= SpawnBoss;
+            _scoreManager.OnScoreChanged -= OnScoreChanged;
+        }
+    }
+
+    private void OnScoreChanged(int currentScore)
+    {
+        if (currentScore >= _nextBossSpawnScore)
+        {
+            SpawnBoss();
+            _nextBossSpawnScore += _bossSpawnInterval;
         }
     }
 

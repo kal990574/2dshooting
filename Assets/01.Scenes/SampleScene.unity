@@ -1254,7 +1254,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentScoreTextUI: {fileID: 760916794}
   _highScoreTextUI: {fileID: 1496042821}
-  _bossSpawnInterval: 10000000
 --- !u!1 &590159110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2438,6 +2437,7 @@ MonoBehaviour:
   _spawnXMax: 4
   _bossSpawnYPosition: 10
   _bossSpawnXPosition: 0
+  _bossSpawnInterval: 5000000
 --- !u!1 &2101286928
 GameObject:
   m_ObjectHideFlags: 0

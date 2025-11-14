@@ -13,11 +13,8 @@ public class ScoreManager : MonoBehaviour
     private const string USER_DATA_KEY = "UserData";
     private UserData _userData;
 
-    [Header("보스 스폰 설정")]
-    [SerializeField] private int _bossSpawnInterval = 10000000;
-    private int _nextBossSpawnScore = 100000;
-
-    public event Action OnBossSpawn;
+    public event Action<int> OnScoreChanged;
+    public int CurrentScore => _currentScore;
 
     private void Start()
     {
@@ -39,12 +36,7 @@ public class ScoreManager : MonoBehaviour
             SaveUserData();
         }
 
-        if (_currentScore >= _nextBossSpawnScore)
-        {
-            OnBossSpawn?.Invoke();
-            _nextBossSpawnScore += _bossSpawnInterval;
-        }
-
+        OnScoreChanged?.Invoke(_currentScore);
         RefreshScore();
     }
 
