@@ -14,8 +14,8 @@ public class ScoreManager : MonoBehaviour
     private UserData _userData;
 
     [Header("보스 스폰 설정")]
-    [SerializeField] private int _bossSpawnInterval = 1000000; // 100만점마다
-    private int _nextBossSpawnScore = 1000000;
+    [SerializeField] private int _bossSpawnInterval = 10000000; // 100만점마다
+    private int _nextBossSpawnScore = 100000;
 
     public event Action OnBossSpawn;
 

@@ -1,0 +1,25 @@
+using UnityEngine;
+
+public class BossBullet : MonoBehaviour
+{
+    [Header("데미지 설정")]
+    [SerializeField] private float _damage = 2f;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Player player = other.GetComponent<Player>();
+            if (player != null)
+            {
+                player.TakeDamage(_damage);
+                Die();
+            }
+        }
+    }
+
+    private void Die()
+    {
+        gameObject.SetActive(false);
+    }
+}

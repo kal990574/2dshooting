@@ -1991,10 +1991,12 @@ MonoBehaviour:
   PlayerBulletSubRightPrefab: {fileID: 8735146429507931707, guid: 2a70b4dffe117b645a37a9588fe0c10c, type: 3}
   EnemyBulletPrefab: {fileID: 4672662005372111176, guid: ce392ccd4c81fc14297d8faacc948ca8, type: 3}
   PetBulletPrefab: {fileID: 214000611579939268, guid: e69784c61ac788d469f14a2ddbdd6401, type: 3}
+  BossBulletPrefab: {fileID: 7959253790743723781, guid: 65d89cbf775d9fa49b40e49cd1682f89, type: 3}
   PlayerMainPoolSize: 100
   PlayerSubPoolSize: 100
   EnemyPoolSize: 100
-  PetPoolSize: 100
+  PetPoolSize: 50
+  BossPoolSize: 50
 --- !u!1 &1190990419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,7 +2436,7 @@ MonoBehaviour:
   _spawnYPosition: 10
   _spawnXMin: -4
   _spawnXMax: 4
-  _bossSpawnYPosition: 8
+  _bossSpawnYPosition: 10
   _bossSpawnXPosition: 0
 --- !u!1 &2101286928
 GameObject:

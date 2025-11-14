@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8007050818042222981}
   - component: {fileID: -6651582918485057745}
   - component: {fileID: -3251871340658087572}
-  m_Layer: 0
-  m_Name: Follower Bullet
+  m_Layer: 7
+  m_Name: PetBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _damage: 10
 --- !u!114 &8007050818042222981
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2624448716366741575}
   - component: {fileID: 6727183913059172923}
   - component: {fileID: -2190878073270117508}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerBulletSubLeft
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6666667, y: 0.9166667}
+    oldSize: {x: 0.5, y: 0.6875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

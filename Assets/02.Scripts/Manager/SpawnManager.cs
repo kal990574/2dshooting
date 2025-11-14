@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _spawnXMax = 4f;
 
     [Header("보스 스폰 포지션")]
-    [SerializeField] private float _bossSpawnYPosition = 8f;
+    [SerializeField] private float _bossSpawnYPosition = 10f;
     [SerializeField] private float _bossSpawnXPosition = 0f;
 
     private float _spawnTimer = 0f;
