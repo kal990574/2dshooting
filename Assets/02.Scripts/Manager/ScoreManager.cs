@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     {
         LoadUserData();
         _highScore = _userData.highScore;
-        _highScoreTextUI.text = $"최고 점수 : {_highScore:N0}";
+        _highScoreTextUI.text = $"{_highScore:N0}";
         //PlayerPrefs.DeleteAll();
     }
 
@@ -42,8 +42,8 @@ public class ScoreManager : MonoBehaviour
 
     private void RefreshScore()
     {
-        _currentScoreTextUI.text = $"현재 점수 : {_currentScore:N0}";
-        _highScoreTextUI.text = $"최고 점수 : {_highScore:N0}";
+        _currentScoreTextUI.text = $"{_currentScore:N0}";
+        _highScoreTextUI.text = $"{_highScore:N0}";
 
         PlayScaleAnimation(_currentScoreTextUI);
         PlayScaleAnimation(_highScoreTextUI);
