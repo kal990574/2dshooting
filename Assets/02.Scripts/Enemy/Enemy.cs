@@ -33,6 +33,12 @@ public class Enemy : MonoBehaviour
         {
             chasingMovement.FindPlayer();
         }
+
+        Hitbox hitbox = GetComponentInChildren<Hitbox>(true);
+        if (hitbox != null)
+        {
+            hitbox.gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
