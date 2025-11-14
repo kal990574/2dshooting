@@ -36,7 +36,6 @@ public class BoomUltimate : MonoBehaviour, IUltimateAbility
         // 3초 대기
         yield return new WaitForSeconds(_particleDuration);
 
-        // Boom과 파티클 제거
         Destroy(boomObject);
         if (particle != null)
         {

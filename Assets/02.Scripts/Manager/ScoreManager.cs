@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
     private UserData _userData;
 
     [Header("보스 스폰 설정")]
-    [SerializeField] private int _bossSpawnInterval = 10000000; // 100만점마다
+    [SerializeField] private int _bossSpawnInterval = 10000000;
     private int _nextBossSpawnScore = 100000;
 
     public event Action OnBossSpawn;
@@ -39,12 +39,10 @@ public class ScoreManager : MonoBehaviour
             SaveUserData();
         }
 
-        // 보스 스폰 체크
         if (_currentScore >= _nextBossSpawnScore)
         {
             OnBossSpawn?.Invoke();
             _nextBossSpawnScore += _bossSpawnInterval;
-            Debug.Log($"보스 스폰! 다음 보스는 {_nextBossSpawnScore:N0}점에 스폰됩니다.");
         }
 
         RefreshScore();

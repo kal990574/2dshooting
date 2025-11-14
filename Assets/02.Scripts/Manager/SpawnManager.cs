@@ -70,14 +70,5 @@ public class SpawnManager : MonoBehaviour
     {
         Vector3 bossSpawnPosition = new Vector3(_bossSpawnXPosition, _bossSpawnYPosition, 0f);
         GameObject boss = EnemyFactory.Instance.MakeBoss(bossSpawnPosition);
-
-        if (boss != null)
-        {
-            Debug.Log("보스 스폰 완료!");
-        }
-        else
-        {
-            Debug.LogWarning("보스 Pool이 부족합니다!");
-        }
     }
 }
