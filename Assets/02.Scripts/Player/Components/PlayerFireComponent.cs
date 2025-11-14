@@ -73,7 +73,7 @@ public class PlayerFireComponent : MonoBehaviour
         return Time.time >= _lastFireTime + _fireCooldown;
     }
 
-    private void Fire()
+    public void Fire()
     {
         if (_mainFirePositionLeft != null)
             BulletFactory.Instance.MakePlayerMainBullet(_mainFirePositionLeft.position);
