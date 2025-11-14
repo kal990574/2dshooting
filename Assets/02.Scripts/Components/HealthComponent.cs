@@ -11,6 +11,7 @@ public class HealthComponent : MonoBehaviour
     private float _currentHealth;
 
     public bool IsDead => _currentHealth <= 0;
+    public float HealthPercentage => _currentHealth / _maxHealth;
 
     void Start()
     {

@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb64acb4c84246479ac54030871b516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100000
+  _maxHealth: 5000
   _knockbackForce: 0
 --- !u!114 &1716563676031315092
 MonoBehaviour:
@@ -338,6 +338,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackInterval: 2
   _firePoint: {fileID: 7500757140602563914}
+  _circleBulletCount: 12
+  _rotationOffset: 0
+  _phase2HealthThreshold: 0.5
+  _phase2AttackDelay: 0.5
 --- !u!1 &9200664440832627202
 GameObject:
   m_ObjectHideFlags: 0

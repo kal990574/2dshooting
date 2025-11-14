@@ -25,7 +25,7 @@ public class BulletFactory : MonoBehaviour
     public int PlayerSubPoolSize = 20;
     public int EnemyPoolSize = 50;
     public int PetPoolSize = 20;
-    public int BossPoolSize = 30;
+    public int BossPoolSize = 70; 
 
     private List<GameObject> _playerMainBulletPool;
     private List<GameObject> _playerSubLeftBulletPool;

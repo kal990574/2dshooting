@@ -23,13 +23,11 @@ public class Enemy : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        // Health 초기화
         if (_healthComponent != null)
         {
             _healthComponent.ResetHealth();
         }
 
-        // Chasing Enemy의 경우 Player 재탐색
         ChasingMovement chasingMovement = GetComponent<ChasingMovement>();
         if (chasingMovement != null)
         {
