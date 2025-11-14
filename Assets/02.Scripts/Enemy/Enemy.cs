@@ -21,6 +21,22 @@ public class Enemy : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        // Health 초기화
+        if (_healthComponent != null)
+        {
+            _healthComponent.ResetHealth();
+        }
+
+        // Chasing Enemy의 경우 Player 재탐색
+        ChasingMovement chasingMovement = GetComponent<ChasingMovement>();
+        if (chasingMovement != null)
+        {
+            chasingMovement.FindPlayer();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -66,7 +82,7 @@ public class Enemy : MonoBehaviour
 
         ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
         scoreManager.AddScore(_score);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void MakeExplosionEffect()

@@ -31,16 +31,16 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        GameObject prefabToSpawn = Random.Range(0f, 100f) < _straightEnemyChance
-            ? _straightEnemyPrefab
-            : _chasingEnemyPrefab;
-
-        if (prefabToSpawn == null) return;
-
         float randomX = Random.Range(_spawnXMin, _spawnXMax);
         Vector3 spawnPosition = new Vector3(randomX, _spawnYPosition, 0f);
 
-        GameObject enemy = Instantiate(prefabToSpawn);
-        enemy.transform.position = spawnPosition;
+        if (Random.Range(0f, 100f) < _straightEnemyChance)
+        {
+            EnemyFactory.Instance.MakeStraightEnemy(spawnPosition);
+        }
+        else
+        {
+            EnemyFactory.Instance.MakeChasingEnemy(spawnPosition);
+        }
     }
 }

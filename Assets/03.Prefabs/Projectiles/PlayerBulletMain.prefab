@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2392511123053850185}
   - component: {fileID: 579585721711917896}
   - component: {fileID: 2146797967117695350}
+  - component: {fileID: 8272847243545777464}
   - component: {fileID: -3263519507266979311}
-  - component: {fileID: 4435814123387846629}
   - component: {fileID: -5287792127636884450}
   - component: {fileID: 7570509864181242919}
   m_Layer: 0
@@ -105,6 +105,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 60
+--- !u!114 &8272847243545777464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735146429507931707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0097209e16ede2e4ba6e8cec993efba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-3263519507266979311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,23 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719cf8a5e08b23a40bbfe0a5ab8a145e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSpeed: 1
+  _startSpeed: 3
   _endSpeed: 7
   _accelerationTime: 1.2
---- !u!114 &4435814123387846629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8735146429507931707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238a5269338faed4a9f9bc4021e27e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _horizontalSpeed: 3
-  _horizontalRange: 1
 --- !u!60 &-5287792127636884450
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +170,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33333334, y: 0.5833333}
+    oldSize: {x: 0.25, y: 0.4375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

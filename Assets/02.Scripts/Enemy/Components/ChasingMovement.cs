@@ -6,6 +6,11 @@ public class ChasingMovement : MovementComponent
 
     void Start()
     {
+        FindPlayer();
+    }
+
+    public void FindPlayer()
+    {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {

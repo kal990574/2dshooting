@@ -32,4 +32,9 @@ public class HealthComponent : MonoBehaviour
         _currentHealth += amount;
         _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
     }
+
+    public void ResetHealth()
+    {
+        _currentHealth = _maxHealth;
+    }
 }
