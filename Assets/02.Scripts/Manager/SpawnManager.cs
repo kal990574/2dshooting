@@ -15,7 +15,29 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _spawnXMin = -4f;
     [SerializeField] private float _spawnXMax = 4f;
 
+    [Header("보스 스폰 포지션")]
+    [SerializeField] private float _bossSpawnYPosition = 8f;
+    [SerializeField] private float _bossSpawnXPosition = 0f;
+
     private float _spawnTimer = 0f;
+    private ScoreManager _scoreManager;
+
+    void Start()
+    {
+        _scoreManager = FindAnyObjectByType<ScoreManager>();
+        if (_scoreManager != null)
+        {
+            _scoreManager.OnBossSpawn += SpawnBoss;
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (_scoreManager != null)
+        {
+            _scoreManager.OnBossSpawn -= SpawnBoss;
+        }
+    }
 
     void Update()
     {
@@ -41,6 +63,21 @@ public class SpawnManager : MonoBehaviour
         else
         {
             EnemyFactory.Instance.MakeChasingEnemy(spawnPosition);
+        }
+    }
+
+    private void SpawnBoss()
+    {
+        Vector3 bossSpawnPosition = new Vector3(_bossSpawnXPosition, _bossSpawnYPosition, 0f);
+        GameObject boss = EnemyFactory.Instance.MakeBoss(bossSpawnPosition);
+
+        if (boss != null)
+        {
+            Debug.Log("보스 스폰 완료!");
+        }
+        else
+        {
+            Debug.LogWarning("보스 Pool이 부족합니다!");
         }
     }
 }
