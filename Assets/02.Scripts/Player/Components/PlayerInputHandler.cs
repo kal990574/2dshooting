@@ -11,6 +11,9 @@ public class PlayerInputHandler : MonoBehaviour
     [Header("속도 설정")]
     [SerializeField] private float _speedStep = 1f;
 
+    [Header("조이스틱")] 
+    public Joystick Joystick;
+    
     private MovementMode _currentMovementMode = MovementMode.Manual;
     private float _currentSpeed = 4f;
     private Vector3 _originPosition;
@@ -56,8 +59,8 @@ public class PlayerInputHandler : MonoBehaviour
             return (_originPosition - transform.position).normalized;
         }
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Joystick.Horizontal; //Input.GetAxis("Horizontal");
+        float v = Joystick.Vertical; //Input.GetAxis("Vertical");
         return new Vector2(h, v).normalized;
     }
 
