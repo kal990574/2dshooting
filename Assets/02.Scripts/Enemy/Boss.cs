@@ -5,12 +5,11 @@ public class Boss : Enemy
     protected override void Awake()
     {
         base.Awake();
-        _score = 1000000; // 100만점
+        _score = 1000000;
     }
 
     protected override void Die()
     {
-        // 보스는 아이템 드롭 없음
         MakeExplosionEffect();
 
         ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
